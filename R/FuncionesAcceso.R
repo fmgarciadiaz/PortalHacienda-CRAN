@@ -37,7 +37,7 @@ freq <- function(x) {
 #'
 #' \code{Get} devuelve la serie seleccionada en series = ID. Para un detalle sobre las opciones
 #' disponibles en parametros consultar:
-#' \url{http://series-tiempo-ar-api.readthedocs.io/es/latest/api_reference/#tabla-de-parametros}
+#' \url{https://series-tiempo-ar-api.readthedocs.io/es/latest/}
 #'
 #' @param series ID de la serie a obtener
 #' @param start_date Fecha de inicio
