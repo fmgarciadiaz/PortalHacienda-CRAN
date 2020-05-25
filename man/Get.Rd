@@ -41,7 +41,7 @@ Un objeto XTS con la serie seleccionada en ID
 \description{
 \code{Get} devuelve la serie seleccionada en series = ID. Para un detalle sobre las opciones
 disponibles en parametros consultar:
-\url{http://series-tiempo-ar-api.readthedocs.io/es/latest/api_reference/#tabla-de-parametros}
+\url{https://series-tiempo-ar-api.readthedocs.io/es/latest/}
 }
 \examples{
 # Cargar serie mensual de TCN

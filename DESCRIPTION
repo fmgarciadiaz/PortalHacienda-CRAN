@@ -1,28 +1,25 @@
 Package: PortalHacienda
 Type: Package
-Title: Acceder con R a los datos del Portal de Hacienda
+Title: Acceder Con R a Los Datos Del Portal De Hacienda
 Version: 0.1.0
-Author: person("Fernando", "Garcia Diaz", email = "fmgarciadiaz78@gmail.com",
+Authors@R: person("Fernando", "Garcia Diaz", email = "fmgarciadiaz78@gmail.com",
                   role = c("aut", "cre"))
-Maintainer: F.García Díaz <fmgarciadiaz78@gmail.com>
 Description: Obtener listado de datos, acceder series y extender con forecasts el Portal de Datos de Hacienda.
 License: GPL-3 + file LICENSE
 Encoding: UTF-8
 LazyData: true
 URL: https://github.com/fmgarciadiaz/PortalHacienda-CRAN
-Imports: dplyr,
-    forecast,
-    timetk,
-    data.table,
-    lubridate,
-    xts,
+Imports: 
+    dplyr (>= 0.8.5),
+    forecast (>= 8.12),
+    timetk (>= 1.0.0),
+    lubridate (>= 1.7.8),
+    xts (>= 0.12-0),
     httr,
-    purrr,
-    tibble,
-    magrittr,
-    nlme,
-    foreign,
-    zoo
+    purrr (>= 0.3.4),
+    tibble (>= 3.0.1),
+    magrittr (>= 1.5),
+    zoo (>= 1.8-8),
+    readr (>= 1.3.1)
 RoxygenNote: 7.1.0
-Suggests:
-Depends: R (>= 2.10)
+Depends: R (>= 3.6.2)

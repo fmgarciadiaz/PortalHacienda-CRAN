@@ -3,6 +3,7 @@
 # Buscar, descargar y proyectar rápidamente series..
 # FERGD 12-2017
 # 08-18: Actualización de series. Incremento del timeout default para evitar problemas recurrentes
+# 05-20: Preparado para CRAN. Se eliminó base offline y caracteres non-ASCII
 # ==============================================================================
 
 # Importar el operador de pipe
@@ -15,7 +16,7 @@ utils::globalVariables(c("serie_descripcion", "serie_id"))   # Evitar notes del 
 .onAttach <- function(libname, pkgname) {
   packageStartupMessage(
     "=============================================================================" %+% "\n" %+%
-    "Acceso API Portal Datos Hacienda - v 0.1.0 - 05-2020 por F. Garc" %+%
+    "Acceso API Portal Datos Hacienda - v 0.1.0 - 05-2020 por F.Garc" %+%
     "\U00ED" %+% "a D" %+% "\U00ED" %+% "az" %+% "\n" )
 }
 
@@ -37,7 +38,7 @@ freq <- function(x) {
 #'
 #' \code{Get} devuelve la serie seleccionada en series = ID. Para un detalle sobre las opciones
 #' disponibles en parametros consultar:
-#' \url{http://series-tiempo-ar-api.readthedocs.io/es/latest/api_reference/#tabla-de-parametros}
+#' \url{https://series-tiempo-ar-api.readthedocs.io/es/latest/}
 #'
 #' @param series ID de la serie a obtener
 #' @param start_date Fecha de inicio
@@ -60,6 +61,7 @@ freq <- function(x) {
 Get <- function(series, start_date = NULL, end_date = NULL, representation_mode = NULL,
                 collapse = NULL, collapse_aggregation = NULL, limit = 1000, timeout = 5,
                 detail = FALSE) {
+  cat("Descagando series...\n")
   url_base <- "http://apis.datos.gob.ar/series/api/series?"                                      # Cambiar URL base si cambia en la WEB
   GETSAFE <- purrr::safely(httr::GET)   # enmarco en purrr para manejo de errores
   suppressMessages(serie <- GETSAFE(url = url_base, query = list(ids = series,
@@ -185,7 +187,7 @@ vForecast <- function(SERIE, N = 6, ...) {
                                         inspect_weekdays = TRUE,
                                         inspect_months = TRUE)))
   print("Serie extendida " %+% N %+% " per\U00ED" %+% "odos, usando modelo auto detectado")
-  return(SERIE.final )
+  return(SERIE.final)
 }
 
 
@@ -204,22 +206,31 @@ vForecast <- function(SERIE, N = 6, ...) {
 #' #Listado <- Search_online("Tipo de Cambio")
 #' #Todaslasseries <- Search_online("*")
 Search_online <- function(PATTERN = "*") {
-  Temp <- data.table::fread("http://infra.datos.gob.ar/catalog/modernizacion/dataset/1/distribution/1.2/download/series-tiempo-metadatos.csv")
+  cat("Descagando base de metadatos...\n")
+  #Temp <- fread("http://infra.datos.gob.ar/catalog/modernizacion/dataset/1/distribution/1.2/download/series-tiempo-metadatos.csv")
+  download.file("http://infra.datos.gob.ar/catalog/modernizacion/dataset/1/distribution/1.2/download/series-tiempo-metadatos.csv",
+                "series-tiempo-metadatos.csv")
+  Temp  <- suppressMessages(suppressWarnings(readr::read_csv("series-tiempo-metadatos.csv")))
+  unlink("series-tiempo-metadatos.csv")
   return(Temp %>% dplyr::filter(grepl(PATTERN, serie_descripcion, ignore.case = TRUE)) %>%
-           tibble::as.tibble())
+           tibble::as_tibble())
 }
 
 
 #' PortalHacienda: Interface R a la API de datos del Ministerio de Hacienda
 #'
-#' Elaborado por F.García Díaz / 2017-2020
+#' Un paquete R para acceder a la API del portal de datos
+#' del Ministerio de Hacienda de la República Argentina.
+#'  Elaborado por F.García Díaz / 2017-2020
 #'
 #' @section PortalHacienda functions:
 #' \code{Search_online} busca las series descargando la última versión del paquete de meta-datos (10mb aprox)
 #'
 #' \code{Get} obtiene las series desde la API
 #'
-#' \code{Forecast} extiende las series obtenidas con un modelo auto-detectado por el paquete **forecast**
+#' \code{Forecast}extiende las series obtenidas con un modelo auto-detectado por el paquete **forecast**
+#'
+#' \code{vForecast} extiende múltiples series obtenidas con un modelo auto-detectado por el paquete **forecast**
 #'
 #' @docType package
 #' @name PortalHacienda
@@ -232,17 +243,20 @@ NULL
 # lintr::lint_package()
 # devtools::use_data_raw()      # Crear carpeta DATA_RAW donde van las bases en CSV y scripts de creacion
 # devtools::use_readme_rmd()
+#usethis::use_build_ignore("NEWS.md")
+#usethis::use_build_ignore("cran-comments.md")
 
 # Imports
-# devtools::use_package("dplyr", type = "Imports")
-# devtools::use_package("forecast", type = "Imports")
-# devtools::use_package("nlme", type = "Imports")
-# devtools::use_package("foreign", type = "Imports")
-# devtools::use_package("timetk", type = "Imports")
-# devtools::use_package("data.table", type = "Imports")
-# devtools::use_package("lubridate", type = "Imports")
-# devtools::use_package("xts", type = "Imports")
-# devtools::use_package("httr", type = "Imports")
-# devtools::use_package("tibble", type = "Imports")
-# devtools::use_package("magrittr", type = "Imports")
+# usethis::use_package("dplyr", type = "Imports", min_version = "0.8.5")
+# usethis::use_package("forecast", type = "Imports", min_version = "8.12")
+# usethis::use_package("timetk", type = "Imports", min_version = "1.0.0")
+# usethis::use_package("lubridate", type = "Imports", min_version = "1.7.8")
+# usethis::use_package("xts", type = "Imports", min_version = "0.12-0")
+# usethis::use_package("zoo", type = "Imports", min_version = "1.8-8")
+# usethis::use_package("httr", type = "Imports")
+# usethis::use_package("tibble", type = "Imports", min_version = "3.0.1")
+# usethis::use_package("magrittr", type = "Imports", min_version = "1.5")
+# usethis::use_package("readr", type = "Imports", min_version = "1.3.1")
+# usethis::use_package("purrr", type = "Imports", min_version = "0.3.4")
+# usethis::use_package("vctrs", type = "Imports", min_version = "0.3.0")
 # rmarkdown::render("README.Rmd")

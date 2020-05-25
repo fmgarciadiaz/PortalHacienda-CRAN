@@ -7,3 +7,6 @@
 ^CODE_OF_CONDUCT.md
 ^CONTRIBUTING.md
 ^README.html
+^revdep$
+^NEWS\.md$
+^cran-comments\.md$
