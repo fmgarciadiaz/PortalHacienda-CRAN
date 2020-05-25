@@ -9,7 +9,7 @@ Description: Obtener listado de datos, acceder series y extender con forecasts e
 License: GPL-3 + file LICENSE
 Encoding: UTF-8
 LazyData: true
-URL: https://github.com/fmgarciadiaz/PortalHacienda
+URL: https://github.com/fmgarciadiaz/PortalHacienda-CRAN
 Imports: dplyr,
     forecast,
     timetk,
