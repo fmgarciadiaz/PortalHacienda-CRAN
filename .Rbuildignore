@@ -1,0 +1,9 @@
+^.*\.Rproj$
+^\.Rproj\.user$
+^data-raw$
+^README\.Rmd$
+^README-.*\.png$
+^README.Rmd
+^CODE_OF_CONDUCT.md
+^CONTRIBUTING.md
+^README.html

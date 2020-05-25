@@ -1,0 +1,92 @@
+---
+title: PortalHacienda Readme
+output: 
+  html_document:
+    keep_md: true
+  rmarkdown::github_document:
+    toc: true
+    toc_depth: 1
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, echo = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "README-"
+)
+```
+
+# PortalHacienda
+
+Un paquete básico de interfase a la API del [Portal de Datos del Ministerio de Hacienda](https://www.minhacienda.gob.ar/datos/)
+
+- **Buscar** series en la descripción de los meta-datos
+- **Descargar** las series directamente de la API del Portal
+- **Extender y proyectar** rápidamente series descargadas (funcionalidad muy básica) 
+
+
+## Instalación
+
+Para instalar el paquete en R ejecutar:
+
+```{r gh-installation, eval = FALSE}
+# Stable
+# install.packages("PortalHacienda")
+# Development
+# install.packages("devtools")
+# devtools::install_github("fmgarciadiaz/PortalHacienda")
+```
+
+**Nota**: Debe instalarse previamente el paquete `devtools` para permitir la descarga desde `github`.
+
+## Ejemplo
+
+Búsqueda de series **(a)** en el listado incluído en el paquete con `Search` o **(b)** en la base online con 
+`Search_online`.
+
+```{r example}
+# Cargar el paquete
+library(PortalHacienda)
+library(magrittr)
+# mostrar las primeras series encontradas
+Series_TCN <- Search_online("tipo de cambio")         
+knitr::kable(head(Series_TCN,3) ,"html") %>% kableExtra::kable_styling(font_size = 7)    
+```
+
+Bajar serie de tipo de cambio con `Get` y extender 12 períodos con `Forecast` (usa modelo auto-detectado del paquete ***forecast*** y extiende según la frecuencia detectada, días, meses o años). 
+Luego hacer un plot sencillo.
+
+
+```{r example2}
+
+TCN <- Forecast(Get("174.1_T_DE_CATES_0_0_32" , start_date = 2000), 12)       
+# Mostrar resultado
+plot(TCN , main = "Tipo de Cambio Nominal ($/USD)")
+```
+
+También se pueden obtener varias series al mismo tiempo, separando con comas...
+
+```{r example3}
+plot(Get("6.2_AGCS_2004_T_39,6.2_IM_2004_T_23,6.2_C_2004_T_12") , legend.loc = "topleft" , main = "VAB sectorial ($ de 2004)")
+```
+
+En caso de cargar varias series y desear proyecciones automáticas, utilizar la
+variante vectorial de `Forecast`, que es `vForecast`:
+
+```{r example4}
+TCN <- vForecast(Get("120.1_PCE_1993_0_24,120.1_ED1_1993_0_26"),12)
+```
+
+### Notas
+Las series se cargan en formato XTS, con la periodicidad auto-detectada por el paquete `xts`.
+La periocidiad es usada por la función `Forecast` para correcta detección de *estacionalidad* y *lags*. `Forecast` agrega demás intervalos de confianza del 95%.
+Las series diarias tienen un tope de **1000** datos (dado el límite actual de la API)
+
+# Estado del Proyecto
+
+- [x] Funcionalidad *básica*
+- [x] Captura de errores de uso o en la devolución de datos (básico)
+- [ ] Captura de errores avanzada
+- [ ] Otros
