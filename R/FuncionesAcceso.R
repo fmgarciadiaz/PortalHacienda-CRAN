@@ -228,9 +228,9 @@ Search_online <- function(PATTERN = "*") {
 #'
 #' \code{Get} obtiene las series desde la API
 #'
-#' \code{Forecast}extiende las series obtenidas con un modelo auto-detectado por el paquete **forecast**
+#' \code{Forecast} extiende las series obtenidas con un modelo auto-detectado por el paquete **forecast** - Hyndman RJ, Khandakar Y (2008).
 #'
-#' \code{vForecast} extiende múltiples series obtenidas con un modelo auto-detectado por el paquete **forecast**
+#' \code{vForecast} extiende múltiples series obtenidas con un modelo auto-detectado por el paquete **forecast** - Hyndman RJ, Khandakar Y (2008).
 #'
 #' @docType package
 #' @name PortalHacienda

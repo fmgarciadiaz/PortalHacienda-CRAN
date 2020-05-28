@@ -4,8 +4,8 @@ Title: Acceder Con R a Los Datos Del Portal De Hacienda
 Version: 0.1.0
 Authors@R: person("Fernando", "Garcia Diaz", email = "fmgarciadiaz78@gmail.com",
                   role = c("aut", "cre"))
-Description: Obtener listado de datos, acceder series y extender con forecasts el Portal de Datos de Hacienda.
-License: GPL-3 + file LICENSE
+Description: Obtener listado de datos, acceder y extender series del Portal de Datos de Hacienda. Las proyecciones se realizan con el paquete forecast -Hyndman RJ, Khandakar Y (2008).    
+License: GPL-3
 Encoding: UTF-8
 LazyData: true
 URL: https://github.com/fmgarciadiaz/PortalHacienda-CRAN
