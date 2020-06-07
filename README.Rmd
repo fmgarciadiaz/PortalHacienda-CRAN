@@ -20,7 +20,7 @@ knitr::opts_chunk$set(
 
 # PortalHacienda
 
-Un paquete básico de interfase a la API del [Portal de Datos del Ministerio de Hacienda](https://www.minhacienda.gob.ar/datos/)
+Un paquete de interfase a la API del Portal de Datos del Ministerio de Hacienda
 
 - **Buscar** series en la descripción de los meta-datos
 - **Descargar** las series directamente de la API del Portal
