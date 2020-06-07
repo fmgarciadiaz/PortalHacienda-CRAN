@@ -21,6 +21,8 @@ field in the form Authors (year) <doi:.....>?" ---> Added reference for the fore
 ## 07-06-20 Resubmission
 This is a resubmission. In this version I have:
 
+ 0. Added Description in English 
+
  1. Fixed "Please add a DOI, arXiv or ISBN to your reference in your Description 
 text in the form authors (year) <doi:...>
 with no space after 'doi:', 'arXiv:' and angle brackets for auto-linking." **DONE:** (Added DOI)
