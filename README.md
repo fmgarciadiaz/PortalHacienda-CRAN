@@ -46,15 +46,11 @@ Búsqueda de series **(a)** en el listado incluído en el paquete con `Search` o
 # Cargar el paquete
 library(PortalHacienda)
 #> =============================================================================
-#> Acceso API Portal Datos Hacienda - v 0.1.0 - 05-2020 por F. García Díaz
+#> Acceso API Portal Datos Hacienda - v 0.1.0 - 05-2020 por F.García Díaz
 library(magrittr)
 # mostrar las primeras series encontradas
 Series_TCN <- Search_online("tipo de cambio")         
-#> Warning: `as.tibble()` is deprecated as of tibble 2.0.0.
-#> Please use `as_tibble()` instead.
-#> The signature and semantics have changed, see `?as_tibble`.
-#> This warning is displayed once every 8 hours.
-#> Call `lifecycle::last_warnings()` to see where this warning was generated.
+#> Descagando base de metadatos...
 knitr::kable(head(Series_TCN,3) ,"html") %>% kableExtra::kable_styling(font_size = 7)    
 ```
 
@@ -177,12 +173,13 @@ Luego hacer un plot sencillo.
 ```r
 
 TCN <- Forecast(Get("174.1_T_DE_CATES_0_0_32" , start_date = 2000), 12)       
+#> Descagando series...
 #> [1] "Cargada/s las series..."
-#> [1] "Cargados 242 datos, desde 2000-01-01 hasta 2020-02-01 Periodicidad estimada: monthly"
+#> [1] "Cargados 243 datos, desde 2000-01-01 hasta 2020-03-01 Periodicidad estimada: monthly"
 #> Registered S3 method overwritten by 'quantmod':
 #>   method            from
 #>   as.zoo.data.frame zoo
-#> [1] "Serie extendida 12 períodos, usando el modelo auto detectado: ARIMA(1,2,3)(0,0,2)[12]"
+#> [1] "Serie extendida 12 períodos, usando el modelo auto detectado: ARIMA(4,2,1)(0,0,2)[12]"
 # Mostrar resultado
 plot(TCN , main = "Tipo de Cambio Nominal ($/USD)")
 ```
@@ -194,6 +191,7 @@ También se pueden obtener varias series al mismo tiempo, separando con comas...
 
 ```r
 plot(Get("6.2_AGCS_2004_T_39,6.2_IM_2004_T_23,6.2_C_2004_T_12") , legend.loc = "topleft" , main = "VAB sectorial ($ de 2004)")
+#> Descagando series...
 #> [1] "Cargada/s las series..."
 #> [1] "Cargados 192 datos, desde 2004-01-01 hasta 2019-10-01 Periodicidad estimada: quarterly"
 ```
@@ -206,6 +204,7 @@ variante vectorial de `Forecast`, que es `vForecast`:
 
 ```r
 TCN <- vForecast(Get("120.1_PCE_1993_0_24,120.1_ED1_1993_0_26"),12)
+#> Descagando series...
 #> [1] "Cargada/s las series..."
 #> [1] "Cargados 64 datos, desde 1986-01-01 hasta 2017-01-01 Periodicidad estimada: yearly"
 #> [1] "Serie extendida 12 períodos, usando modelo auto detectado"
@@ -218,6 +217,7 @@ Las series diarias tienen un tope de **1000** datos (dado el límite actual de l
 
 # Estado del Proyecto
 
+- [ ] Aprobado en CRAN
 - [x] Funcionalidad *básica*
 - [x] Captura de errores de uso o en la devolución de datos (básico)
 - [ ] Captura de errores avanzada
