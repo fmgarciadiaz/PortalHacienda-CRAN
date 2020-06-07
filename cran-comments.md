@@ -36,3 +36,8 @@ allow by CRAN policies. Please only write/save files if the user has
 specified a directory. In your examples/vignettes/tests you can write to 
 tempdir(). I.e. download.file(..., file.path(tempdir(), "series-tiempo-metadatos.csv"))
 **DONE:** changed the function so that it always write to tempdir()
+
+## 07-06-20 Resubmission
+This is a resubmission. In this version I have:
+1. Fixed NOTES in automated tests (examples taking > 5 sec, removed possibly invalid URL).
+2. Can't fix possibly miss-spelled words since they are just in Spanish!
