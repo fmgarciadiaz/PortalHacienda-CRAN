@@ -18,6 +18,8 @@ Utilizar \code{Search_online("*")} para descargar todos los metadatos y hacer b√
 sin descargar toda la base nuevamente.
 }
 \examples{
-#Listado <- Search_online("Tipo de Cambio")
-#Todaslasseries <- Search_online("*")
+\donttest{
+Listado <- Search_online("Tipo de Cambio")
+Todaslasseries <- Search_online("*")
+}
 }

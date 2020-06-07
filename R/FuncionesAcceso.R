@@ -203,15 +203,16 @@ vForecast <- function(SERIE, N = 6, ...) {
 #' @export
 #'
 #' @examples
-#' #Listado <- Search_online("Tipo de Cambio")
-#' #Todaslasseries <- Search_online("*")
+#' \donttest{
+#' Listado <- Search_online("Tipo de Cambio")
+#' Todaslasseries <- Search_online("*")
+#' }
 Search_online <- function(PATTERN = "*") {
   cat("Descagando base de metadatos...\n")
-  #Temp <- fread("http://infra.datos.gob.ar/catalog/modernizacion/dataset/1/distribution/1.2/download/series-tiempo-metadatos.csv")
   download.file("http://infra.datos.gob.ar/catalog/modernizacion/dataset/1/distribution/1.2/download/series-tiempo-metadatos.csv",
-                "series-tiempo-metadatos.csv")
-  Temp  <- suppressMessages(suppressWarnings(readr::read_csv("series-tiempo-metadatos.csv")))
-  unlink("series-tiempo-metadatos.csv")
+                file.path(tempdir(), "series-tiempo-metadatos.csv"))  # Fixed as per CRAN suggestion
+  Temp  <- suppressMessages(suppressWarnings(readr::read_csv(file.path(tempdir(), "series-tiempo-metadatos.csv"))))
+  unlink(file.path(tempdir(), "series-tiempo-metadatos.csv"))
   return(Temp %>% dplyr::filter(grepl(PATTERN, serie_descripcion, ignore.case = TRUE)) %>%
            tibble::as_tibble())
 }
@@ -219,9 +220,12 @@ Search_online <- function(PATTERN = "*") {
 
 #' PortalHacienda: Interface R a la API de datos del Ministerio de Hacienda
 #'
-#' Un paquete R para acceder a la API del portal de datos
-#' del Ministerio de Hacienda de la República Argentina.
-#'  Elaborado por F.García Díaz / 2017-2020
+#' Un paquete R para acceder a la API del portal de datos del Ministerio de Hacienda de la República Argentina.
+#' Se proveen funciones para buscar, descargar y proyectar las series de tiempo de la base.
+#' An R client for the Ministry of Economy of Argentina time-series database API.
+#' This package provides functions for searching, downloading and forecasting available time-series.
+#'
+#'
 #'
 #' @section PortalHacienda functions:
 #' \code{Search_online} busca las series descargando la última versión del paquete de meta-datos (10mb aprox)
@@ -235,28 +239,3 @@ Search_online <- function(PATTERN = "*") {
 #' @docType package
 #' @name PortalHacienda
 NULL
-
-
-# Para correr antes de deploy
-# devtools::document()
-# devtools::use_testthat()
-# lintr::lint_package()
-# devtools::use_data_raw()      # Crear carpeta DATA_RAW donde van las bases en CSV y scripts de creacion
-# devtools::use_readme_rmd()
-#usethis::use_build_ignore("NEWS.md")
-#usethis::use_build_ignore("cran-comments.md")
-
-# Imports
-# usethis::use_package("dplyr", type = "Imports", min_version = "0.8.5")
-# usethis::use_package("forecast", type = "Imports", min_version = "8.12")
-# usethis::use_package("timetk", type = "Imports", min_version = "1.0.0")
-# usethis::use_package("lubridate", type = "Imports", min_version = "1.7.8")
-# usethis::use_package("xts", type = "Imports", min_version = "0.12-0")
-# usethis::use_package("zoo", type = "Imports", min_version = "1.8-8")
-# usethis::use_package("httr", type = "Imports")
-# usethis::use_package("tibble", type = "Imports", min_version = "3.0.1")
-# usethis::use_package("magrittr", type = "Imports", min_version = "1.5")
-# usethis::use_package("readr", type = "Imports", min_version = "1.3.1")
-# usethis::use_package("purrr", type = "Imports", min_version = "0.3.4")
-# usethis::use_package("vctrs", type = "Imports", min_version = "0.3.0")
-# rmarkdown::render("README.Rmd")

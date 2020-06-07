@@ -7,15 +7,30 @@
 There were no ERRORs or WARNINGs. 
 
 
----
 ## 05-28-20 Resubmission
 This is a resubmission. In this version I have:
 
-* 1. Fixed "This contradits each other: GPL-3 + file LICENSE means file LICENSE 
+ 1. Fixed "This contradits each other: GPL-3 + file LICENSE means file LICENSE 
 contains additional restrictions such as attribution requeirements. You 
-shold not specify a full license file here.If you want to allow GPL-2 in addition, somply write
-
+should not specify a full license file here.If you want to allow GPL-2 in addition, simply write
 License: GPL-2 | GPL-3 and omit the license file. " ---> Now GPL-3. Thanks!!
 
-* 2. Fixed "Is there some reference about the method you can add in the Description 
+ 2. Fixed "Is there some reference about the method you can add in the Description 
 field in the form Authors (year) <doi:.....>?" ---> Added reference for the forecasting method (I simply use the forecast package, Hyndman RJ, Khandakar Y (2008))
+
+## 07-06-20 Resubmission
+This is a resubmission. In this version I have:
+
+ 1. Fixed "Please add a DOI, arXiv or ISBN to your reference in your Description 
+text in the form authors (year) <doi:...>
+with no space after 'doi:', 'arXiv:' and angle brackets for auto-linking." **DONE:** (Added DOI)
+
+ 2. Fixed "Please do not comment out your examples and use \\donttest{} instead:" **DONE:** 
+ (Used \\donttest)
+
+ 3. Fixed. Please ensure that your functions do not modify (save or delete) the 
+user's home filespace in your examples/vignettes/tests. That is not 
+allow by CRAN policies. Please only write/save files if the user has 
+specified a directory. In your examples/vignettes/tests you can write to 
+tempdir(). I.e. download.file(..., file.path(tempdir(), "series-tiempo-metadatos.csv"))
+**DONE:** changed the function so that it always write to tempdir()

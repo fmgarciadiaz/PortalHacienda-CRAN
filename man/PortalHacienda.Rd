@@ -5,9 +5,10 @@
 \alias{PortalHacienda}
 \title{PortalHacienda: Interface R a la API de datos del Ministerio de Hacienda}
 \description{
-Un paquete R para acceder a la API del portal de datos
-del Ministerio de Hacienda de la República Argentina.
- Elaborado por F.García Díaz / 2017-2020
+Un paquete R para acceder a la API del portal de datos del Ministerio de Hacienda de la República Argentina.
+Se proveen funciones para buscar, descargar y proyectar las series de tiempo de la base.
+An R client for the Ministry of Economy of Argentina time-series database API.
+This package provides functions for searching, downloading and forecasting available time-series.
 }
 \section{PortalHacienda functions}{
 
@@ -15,8 +16,8 @@ del Ministerio de Hacienda de la República Argentina.
 
 \code{Get} obtiene las series desde la API
 
-\code{Forecast}extiende las series obtenidas con un modelo auto-detectado por el paquete **forecast**
+\code{Forecast} extiende las series obtenidas con un modelo auto-detectado por el paquete **forecast** - Hyndman RJ, Khandakar Y (2008).
 
-\code{vForecast} extiende múltiples series obtenidas con un modelo auto-detectado por el paquete **forecast**
+\code{vForecast} extiende múltiples series obtenidas con un modelo auto-detectado por el paquete **forecast** - Hyndman RJ, Khandakar Y (2008).
 }
 
