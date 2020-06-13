@@ -21,6 +21,8 @@ Recomendado sólo para estimaciones rápidas. A diferencia de \code{Forecast}, n
 como input un XTS con múltiples series de tiempo.
 }
 \examples{
-# Forecast de 12 meses del tipo de cambio
-TCN <- vForecast(Get("120.1_PCE_1993_0_24,120.1_ED1_1993_0_26"),12)
+\donttest{
+#' # Forecast de 12 meses del tipo de cambio
+TCN <- vForecast(Get("120.1_PCE_1993_0_24,120.1_ED1_1993_0_26", start_date = 2010),12)
+}
 }

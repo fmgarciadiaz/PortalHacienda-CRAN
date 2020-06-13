@@ -54,9 +54,9 @@ freq <- function(x) {
 #' @export
 #' @examples
 #' # Cargar serie mensual de TCN
-#' TCN     <- Get("174.1_T_DE_CATES_0_0_32")
+#' TCN     <- Get("174.1_T_DE_CATES_0_0_32", start_date = "2017")
 #' # Cargar serie mensual de TCN, transformada en anual y en variaciones
-#' TCN <- Get("174.1_T_DE_CATES_0_0_32", start_date = 1999, collapse = "year",
+#' TCN <- Get("174.1_T_DE_CATES_0_0_32", start_date = 2015, collapse = "year",
 #' collapse_aggregation = "avg", representation_mode = "percent_change")
 Get <- function(series, start_date = NULL, end_date = NULL, representation_mode = NULL,
                 collapse = NULL, collapse_aggregation = NULL, limit = 1000, timeout = 5,
@@ -119,7 +119,9 @@ Get <- function(series, start_date = NULL, end_date = NULL, representation_mode 
 #'
 #' @examples
 #' # Forecast de 12 meses del tipo de cambio
-#' TCN <- Forecast(Get("174.1_T_DE_CATES_0_0_32"), N = 12 , confidence = c(80))
+#' \donttest{
+#' TCN <- Forecast(Get("174.1_T_DE_CATES_0_0_32", start_date = "2017"), N = 12 , confidence = c(80))
+#' }
 Forecast <- function(SERIE, N = 6, confidence = c(80), ...) {
   if (confidence == FALSE)
     level <- c(95)
@@ -173,7 +175,7 @@ Forecast <- function(SERIE, N = 6, confidence = c(80), ...) {
 #' @examples
 #' \donttest{
 #' #' # Forecast de 12 meses del tipo de cambio
-#' TCN <- vForecast(Get("120.1_PCE_1993_0_24,120.1_ED1_1993_0_26"),12)
+#' TCN <- vForecast(Get("120.1_PCE_1993_0_24,120.1_ED1_1993_0_26", start_date = 2010),12)
 #' }
 vForecast <- function(SERIE, N = 6, ...) {
   attr(SERIE, "frequency") <- freq(SERIE)                                                    # Fijar su frecuencia en base a estimacion de periocididad
