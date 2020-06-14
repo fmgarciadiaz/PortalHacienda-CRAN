@@ -56,10 +56,9 @@ Búsqueda de series **(a)** en el listado incluído en el paquete con `Search` o
 ```{r example}
 # Cargar el paquete
 library(PortalHacienda)
-library(magrittr)
 # mostrar las primeras series encontradas
 Series_TCN <- Search_online("tipo de cambio")         
-knitr::kable(head(Series_TCN,3) ,"html") %>% kableExtra::kable_styling(font_size = 7)    
+kableExtra::kable_styling(knitr::kable(head(Series_TCN,3) ,"html"), font_size = 7)    
 ```
 
 Bajar serie de tipo de cambio con `Get` y extender 12 períodos con `Forecast` (usa modelo auto-detectado del paquete ***forecast*** y extiende según la frecuencia detectada, días, meses o años). 

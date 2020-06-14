@@ -50,11 +50,10 @@ Búsqueda de series **(a)** en el listado incluído en el paquete con
 library(PortalHacienda)
 #> =============================================================================
 #> Acceso API Portal Datos Hacienda - v 0.1.1 - 06-2020 por F.García Díaz
-library(magrittr)
 # mostrar las primeras series encontradas
 Series_TCN <- Search_online("tipo de cambio")         
 #> Descagando base de metadatos...
-knitr::kable(head(Series_TCN,3) ,"html") %>% kableExtra::kable_styling(font_size = 7)    
+kableExtra::kable_styling(knitr::kable(head(Series_TCN,3) ,"html"), font_size = 7)    
 ```
 
 <table class="table" style="font-size: 7px; margin-left: auto; margin-right: auto;">
