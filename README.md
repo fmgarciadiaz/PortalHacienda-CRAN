@@ -51,8 +51,9 @@ library(PortalHacienda)
 #> =============================================================================
 #> Acceso API Portal Datos Hacienda - v 0.1.1 - 06-2020 por F.García Díaz
 # mostrar las primeras series encontradas
-Series_TCN <- Search_online("tipo de cambio")         
+Series_TCN <- Search_online("tipo de cambio")
 #> Descagando base de metadatos...
+Series_TCN$distribucion_url_descarga <- NULL
 kableExtra::kable_styling(knitr::kable(head(Series_TCN,3) ,"html"), font_size = 7)    
 ```
 
@@ -119,12 +120,6 @@ distribucion\_titulo
 <th style="text-align:left;">
 
 distribucion\_descripcion
-
-</th>
-
-<th style="text-align:left;">
-
-distribucion\_url\_descarga
 
 </th>
 
@@ -273,12 +268,6 @@ procesamiento de alimentos
 
 Índice de Tipo de Cambio Real Sectorial Efectivo en formato de series de
 tiempo
-
-</td>
-
-<td style="text-align:left;">
-
-<http://estadisticas.produccion.gob.ar/dataset/1/distribution/1.1/tcrmse-series.csv>
 
 </td>
 
@@ -433,12 +422,6 @@ tiempo
 
 <td style="text-align:left;">
 
-<http://estadisticas.produccion.gob.ar/dataset/1/distribution/1.1/tcrmse-series.csv>
-
-</td>
-
-<td style="text-align:left;">
-
 Ministerio de Producción. Secretaría de Transformación Productiva.
 Subsecretaría de Desarrollo y Planeamiento Productivo.
 
@@ -582,12 +565,6 @@ tcrse\_cuero
 
 Índice de Tipo de Cambio Real Sectorial Efectivo en formato de series de
 tiempo
-
-</td>
-
-<td style="text-align:left;">
-
-<http://estadisticas.produccion.gob.ar/dataset/1/distribution/1.1/tcrmse-series.csv>
 
 </td>
 

@@ -56,7 +56,8 @@ Búsqueda de series **(a)** en el listado incluído en el paquete con `Search` o
 # Cargar el paquete
 library(PortalHacienda)
 # mostrar las primeras series encontradas
-Series_TCN <- Search_online("tipo de cambio")         
+Series_TCN <- Search_online("tipo de cambio")
+Series_TCN$distribucion_url_descarga <- NULL
 kableExtra::kable_styling(knitr::kable(head(Series_TCN,3) ,"html"), font_size = 7)    
 ```
 
