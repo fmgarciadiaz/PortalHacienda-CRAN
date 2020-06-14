@@ -1,11 +1,6 @@
 ---
-title: PortalHacienda Readme
-output: 
-  html_document:
-    keep_md: true
-  rmarkdown::github_document:
-    toc: true
-    toc_depth: 1
+output: github_document
+always_allow_html: true
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
@@ -14,7 +9,8 @@ output:
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
-  fig.path = "README-"
+  fig.path = "man/figures/README-",
+  out.width = "100%"
 )
 ```
 
@@ -22,6 +18,7 @@ knitr::opts_chunk$set(
 [![CRAN status](https://www.r-pkg.org/badges/version/PortalHacienda)](https://cran.r-project.org/package=PortalHacienda)
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![R build status](https://github.com/fmgarciadiaz/PortalHacienda-CRAN/workflows/R-CMD-check/badge.svg)](https://github.com/fmgarciadiaz/PortalHacienda-CRAN/actions)
+
 <!-- badges: end -->
 
 
@@ -37,19 +34,17 @@ Un paquete de interfase a la API del Portal de Datos del Ministerio de Hacienda
 
 ## Instalación
 
-Para instalar el paquete en R ejecutar:
+Para instalar el paquete desde [CRAN](https://CRAN.R-project.org) con:
 
 ```{r gh-installation, eval = FALSE}
-# Stable
-# install.packages("PortalHacienda")
+install.packages("PortalHacienda")
 ```
 
 Versión de desarrollo: 
 
 ```{r gh-installation2, eval = FALSE}
-# Development
 # install.packages("devtools")
-# devtools::install_github("fmgarciadiaz/PortalHacienda")
+devtools::install_github("fmgarciadiaz/PortalHacienda")
 ```
 **Nota**: Debe instalarse previamente el paquete `devtools` para permitir la descarga desde `github`.
 

@@ -46,10 +46,11 @@ This is a resubmission. In this version I have:
 invalid URL).
 2. Can't fix possibly miss-spelled words since they are just in Spanish!
 
-## 06-13-20 Minor fixes 
+## 06-13-20 v 0.1.1 Minor patch -  
 As suggested by Uwe Ligges I'm moving some examples to /donttest since the take 
 more than 5 secs. to run (there's no way I can reduce that running time since 
 they involve connecting to the Ministry of Economy API, which has high latency). 
 Also reduced the amount of retrieved data points in the examples, 
-since big requests may come up with random server time-out errors.
+since big requests may come up with random server time-out errors, returning
+ERROR in CRAN status.
 
