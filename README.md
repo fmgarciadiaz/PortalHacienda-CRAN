@@ -12,7 +12,7 @@ status](https://github.com/fmgarciadiaz/PortalHacienda-CRAN/workflows/R-CMD-chec
 
 <!-- badges: end -->
 
-# PortalHacienda <a href='https:/tidyr.tidyverse.org'><img src='PortalHacienda-Logo-01.png' align="right" height="139" /></a>
+# PortalHacienda <img src='man/figures/logo.png' align="right" height="56.5" />
 
 Un paquete de interfase a la API del Portal de Datos del Ministerio de
 Hacienda
