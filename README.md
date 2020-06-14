@@ -12,7 +12,15 @@ output:
 
 
 
-# PortalHacienda
+<!-- badges: start -->
+[![CRAN status](https://www.r-pkg.org/badges/version/PortalHacienda)](https://cran.r-project.org/package=PortalHacienda)
+[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
+[![R build status](https://github.com/fmgarciadiaz/PortalHacienda-CRAN/workflows/R-CMD-check/badge.svg)](https://github.com/fmgarciadiaz/PortalHacienda-CRAN/actions)
+<!-- badges: end -->
+
+
+# PortalHacienda <a href='https:/tidyr.tidyverse.org'><img src='PortalHacienda-Logo-01.png' align="right" height="139" /></a>
+
 
 Un paquete de interfase a la API del Portal de Datos del Ministerio de Hacienda
 
@@ -29,11 +37,16 @@ Para instalar el paquete en R ejecutar:
 ```r
 # Stable
 # install.packages("PortalHacienda")
+```
+
+Versión de desarrollo: 
+
+
+```r
 # Development
 # install.packages("devtools")
 # devtools::install_github("fmgarciadiaz/PortalHacienda")
 ```
-
 **Nota**: Debe instalarse previamente el paquete `devtools` para permitir la descarga desde `github`.
 
 ## Ejemplo
@@ -217,7 +230,7 @@ Las series diarias tienen un tope de **1000** datos (dado el límite actual de l
 
 # Estado del Proyecto
 
-- [ ] Aprobado en CRAN
+- [x] Aprobado en CRAN
 - [x] Funcionalidad *básica*
 - [x] Captura de errores de uso o en la devolución de datos (básico)
 - [ ] Captura de errores avanzada
