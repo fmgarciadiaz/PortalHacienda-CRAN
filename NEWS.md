@@ -1,5 +1,5 @@
 # PortalHacienda 0.1.1
-- Bug Fixes
+- Fixed examples to meet <5 sec requirement
 
 # PortalHacienda 0.1.0
 - Subido a CRAN
