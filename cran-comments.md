@@ -54,3 +54,6 @@ Also reduced the amount of retrieved data points in the examples,
 since big requests may come up with random server time-out errors, returning
 ERROR in CRAN status.
 
+## 06-14-20 Resubmission
+Temporary Ministry of Economy API error caused Readme.md to fail 
+
