@@ -700,7 +700,7 @@ TCN <- Forecast(Get("174.1_T_DE_CATES_0_0_32" , start_date = 2000), 12)
 plot(TCN , main = "Tipo de Cambio Nominal ($/USD)")
 ```
 
-<img src="man/figures/README-example2-1.png" width="100%" />
+<img src="man/figures/README-example2-1.png" width="80%" />
 
 También se pueden obtener varias series al mismo tiempo, separando con
 comas…
@@ -712,7 +712,7 @@ plot(Get("6.2_AGCS_2004_T_39,6.2_IM_2004_T_23,6.2_C_2004_T_12") , legend.loc = "
 #> [1] "Cargados 192 datos, desde 2004-01-01 hasta 2019-10-01 Periodicidad estimada: quarterly"
 ```
 
-<img src="man/figures/README-example3-1.png" width="100%" />
+<img src="man/figures/README-example3-1.png" width="80%" />
 
 En caso de cargar varias series y desear proyecciones automáticas,
 utilizar la variante vectorial de `Forecast`, que es `vForecast`:
