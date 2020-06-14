@@ -1,7 +1,7 @@
 Package: PortalHacienda
 Type: Package
 Title: Acceder Con R a Los Datos Del Portal De Hacienda
-Version: 0.1.1
+Version: 0.1.2.9000
 Authors@R: person("Fernando", "Garcia Diaz", email = "fmgarciadiaz78@gmail.com",
                   role = c("aut", "cre"))
 Description: Obtener listado de datos, acceder y extender series del Portal de 

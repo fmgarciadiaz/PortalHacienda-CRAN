@@ -9,6 +9,8 @@ status](https://www.r-pkg.org/badges/version/PortalHacienda)](https://cran.r-pro
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![R build
 status](https://github.com/fmgarciadiaz/PortalHacienda-CRAN/workflows/R-CMD-check/badge.svg)](https://github.com/fmgarciadiaz/PortalHacienda-CRAN/actions)
+[![DOI](https://zenodo.org/badge/266652798.svg)](https://zenodo.org/badge/latestdoi/266652798)
+![Downloads](https://cranlogs.r-pkg.org/badges/grand-total/PortalHacienda?color=ff69b4)
 
 <!-- badges: end -->
 
@@ -701,7 +703,7 @@ TCN <- vForecast(Get("120.1_PCE_1993_0_24,120.1_ED1_1993_0_26"),12)
 #> [1] "Serie extendida 12 períodos, usando modelo auto detectado"
 ```
 
-### Notas
+### Nota:
 
 Las series se cargan en formato XTS, con la periodicidad auto-detectada
 por el paquete `xts`. La periocidiad es usada por la función `Forecast`
@@ -709,7 +711,12 @@ para correcta detección de *estacionalidad* y *lags*. `Forecast` agrega
 demás intervalos de confianza del 95%. Las series diarias tienen un tope
 de **1000** datos (dado el límite actual de la API)
 
-# Estado del Proyecto
+## Cómo citar
+
+> Fernando García Díaz. (2020, June 14). fmgarciadiaz/PortalHacienda
+> (Version 0.1.1). Zenodo. <http://doi.org/10.5281/zenodo.3893947>
+
+## Estado del Proyecto
 
   - [x] Aprobado en CRAN
   - [x] Funcionalidad *básica*
