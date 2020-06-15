@@ -8,7 +8,7 @@
 
 # Importar el operador de pipe
 #' @importFrom magrittr "%>%"
-magrittr::`%>%`
+#magrittr::`%>%`
 #' @importFrom utils "download.file"
 utils::globalVariables(c("serie_descripcion", "serie_id"))   # Evitar notes del check
 
@@ -17,7 +17,7 @@ utils::globalVariables(c("serie_descripcion", "serie_id"))   # Evitar notes del 
   packageStartupMessage(
     "=============================================================================" %+% "\n" %+%
     "Acceso API Portal Datos Hacienda - v 0.1.2 - 06-2020 por F.Garc" %+%
-    "\U00ED" %+% "a D" %+% "\U00ED" %+% "az" %+% "\n" )
+    "\U00ED" %+% "a D" %+% "\U00ED" %+% "az" %+% "\n")
 }
 
 # Definición Funciones internas helpers
@@ -76,9 +76,9 @@ Get <- function(series, start_date = NULL, end_date = NULL, representation_mode 
   if (is.null(serie$result)) {
     stop("Error general o timeout, por favor verificar conexi\u00F3n.")
     }
-  suppressMessages(serie <- httr::content(serie$result , encoding = "UTF-8"))
+  suppressMessages(serie <- httr::content(serie$result, encoding = "UTF-8"))
   if ("errors" %in% names(serie)) stop("Error en la carga > " %+% serie$errors[[1]][[1]])
-  if(detail == TRUE){
+  if (detail == TRUE) {
     Listado <- Search_online()
     Nombres <-  Listado %>% dplyr::filter(grepl(gsub("\\,", "\\|", series), serie_id)) %>%
     dplyr::select(serie_id, serie_descripcion)                                                   # obtener descripciones
@@ -87,8 +87,7 @@ Get <- function(series, start_date = NULL, end_date = NULL, representation_mode 
     print("Cargada/s las series: " %+% Nombres[1] %+% ". Descripci\u00F3n: " %+% Nombres[2])
     print("Cargados " %+% length(serie) %+% " datos, desde " %+% min(zoo::index(serie)) %+%
           " hasta " %+% max(zoo::index(serie)) %+% " Periodicidad estimada: " %+% xts::periodicity(serie)$scale)
-  } else
-  {
+  } else {
     serie <- xts::xts(serie[, -1], order.by = lubridate::ymd(serie$indice_tiempo), unique = TRUE)  # Pasar a XTS
     attr(serie, "frequency") <- freq(serie)                                                        # Fijar frecuencia de la serie en el XTS
     print("Cargada/s las series...")
@@ -151,7 +150,7 @@ Forecast <- function(SERIE, N = 6, confidence = c(80), ...) {
     }
   colnames(SERIE.final)[1] <- "y"
   print("Serie extendida " %+% N %+% " per\U00EDodos, usando el modelo auto detectado: " %+% SERIE.model)
-  return(SERIE.final )
+  return(SERIE.final)
 }
 
 # ==========================================================================

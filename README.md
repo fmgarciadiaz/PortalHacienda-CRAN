@@ -51,7 +51,7 @@ Búsqueda de series **(a)** en el listado incluído en el paquete con
 # Cargar el paquete
 library(PortalHacienda)
 #> =============================================================================
-#> Acceso API Portal Datos Hacienda - v 0.1.0 - 05-2020 por F.García Díaz
+#> Acceso API Portal Datos Hacienda - v 0.1.2 - 06-2020 por F.García Díaz
 # mostrar las primeras series encontradas
 Series_TCN <- Search_online("tipo de cambio")
 #> Descagando base de metadatos...
