@@ -10,7 +10,7 @@ experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](h
 [![R build
 status](https://github.com/fmgarciadiaz/PortalHacienda-CRAN/workflows/R-CMD-check/badge.svg)](https://github.com/fmgarciadiaz/PortalHacienda-CRAN/actions)
 [![DOI](https://zenodo.org/badge/266652798.svg)](https://zenodo.org/badge/latestdoi/266652798)
-![Downloads](https://cranlogs.r-pkg.org/badges/grand-total/PortalHacienda?color=ff69b4)
+[![Downloads](https://cranlogs.r-pkg.org/badges/grand-total/PortalHacienda?color=ff69b4)](https://cran.r-project.org/package=PortalHacienda)
 
 <!-- badges: end -->
 
@@ -51,7 +51,7 @@ Búsqueda de series **(a)** en el listado incluído en el paquete con
 # Cargar el paquete
 library(PortalHacienda)
 #> =============================================================================
-#> Acceso API Portal Datos Hacienda - v 0.1.1 - 06-2020 por F.García Díaz
+#> Acceso API Portal Datos Hacienda - v 0.1.0 - 05-2020 por F.García Díaz
 # mostrar las primeras series encontradas
 Series_TCN <- Search_online("tipo de cambio")
 #> Descagando base de metadatos...

@@ -19,7 +19,7 @@ knitr::opts_chunk$set(
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![R build status](https://github.com/fmgarciadiaz/PortalHacienda-CRAN/workflows/R-CMD-check/badge.svg)](https://github.com/fmgarciadiaz/PortalHacienda-CRAN/actions)
 [![DOI](https://zenodo.org/badge/266652798.svg)](https://zenodo.org/badge/latestdoi/266652798)
-![Downloads](https://cranlogs.r-pkg.org/badges/grand-total/PortalHacienda?color=ff69b4)
+[![Downloads](https://cranlogs.r-pkg.org/badges/grand-total/PortalHacienda?color=ff69b4)](https://cran.r-project.org/package=PortalHacienda)
 
 <!-- badges: end -->
 
