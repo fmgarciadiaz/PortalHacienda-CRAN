@@ -713,8 +713,8 @@ de **1000** datos (dado el límite actual de la API)
 
 ## Cómo citar
 
-> Fernando García Díaz. (2020, June 14). fmgarciadiaz/PortalHacienda
-> (Version 0.1.1). Zenodo. <http://doi.org/10.5281/zenodo.3893947>
+> Fernando García Díaz. (2020, June 14). fmgarciadiaz/PortalHacienda.
+> Zenodo. <http://doi.org/10.5281/zenodo.3893947>
 
 ## Estado del Proyecto
 
