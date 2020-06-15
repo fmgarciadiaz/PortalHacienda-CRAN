@@ -4,6 +4,7 @@
 # FERGD 12-2017
 # 08-18: Actualización de series. Incremento del timeout default para evitar problemas recurrentes
 # 05-20: Preparado para CRAN. Se eliminó base offline y caracteres non-ASCII
+# 06-20: Correcciones para ser aceptado en CRAN
 # ==============================================================================
 
 # Importar el operador de pipe

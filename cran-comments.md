@@ -57,4 +57,6 @@ ERROR in CRAN status.
 ## 06-14-20 Resubmission
 - Temporary Ministry of Economy API error caused Readme.md to fail 
 
+## 07-14-20 Resubmission
+- Fixed Roxygen reexporting magrittr pipe causing WARNING
 
