@@ -8,7 +8,6 @@
 
 # Importar el operador de pipe
 #' @importFrom magrittr "%>%"
-#magrittr::`%>%`
 #' @importFrom utils "download.file"
 utils::globalVariables(c("serie_descripcion", "serie_id"))   # Evitar notes del check
 
