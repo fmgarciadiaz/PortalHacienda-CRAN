@@ -44,18 +44,19 @@ permitir la descarga desde `github`.
 
 ## Ejemplo
 
-Búsqueda de series **(a)** en el listado incluído en el paquete con
-`Search` o **(b)** en la base online con `Search_online`.
+Búsqueda de series en la base de meta-datos online con `Search_online`.
 
 ``` r
 # Cargar el paquete
 library(PortalHacienda)
 #> =============================================================================
 #> Acceso API Portal Datos Hacienda - v 0.1.2 - 06-2020 por F.García Díaz
-# mostrar las primeras series encontradas
+# Buscar series relacionadas con el tipo de cambio
 Series_TCN <- Search_online("tipo de cambio")
 #> Descagando base de metadatos...
+# Borrar la columna de links que devuelve la búsqueda 
 Series_TCN$distribucion_url_descarga <- NULL
+# mostrar prieras tres líneas de la tabla
 kableExtra::kable_styling(knitr::kable(head(Series_TCN,3) ,"html"), font_size = 7)    
 ```
 
@@ -673,6 +674,9 @@ TCN <- Forecast(Get("174.1_T_DE_CATES_0_0_32" , start_date = 2000), 12)
 #> Registered S3 method overwritten by 'quantmod':
 #>   method            from
 #>   as.zoo.data.frame zoo
+#> Warning: ARGUMENT DEPRECATION: `n_future` is deprecated. Please use `length_out` instead.
+#> - `length_out` always returns `length_out` observations
+#> - `n_future` may return fewer than `n_future` when inspect_weekdays/inspect_months and skip/insert values are included.
 #> [1] "Serie extendida 12 períodos, usando el modelo auto detectado: ARIMA(4,2,1)(0,0,2)[12]"
 # Mostrar resultado
 plot(TCN , main = "Tipo de Cambio Nominal ($/USD)")
@@ -700,6 +704,9 @@ TCN <- vForecast(Get("120.1_PCE_1993_0_24,120.1_ED1_1993_0_26"),12)
 #> Descagando series...
 #> [1] "Cargada/s las series..."
 #> [1] "Cargados 64 datos, desde 1986-01-01 hasta 2017-01-01 Periodicidad estimada: yearly"
+#> Warning: ARGUMENT DEPRECATION: `n_future` is deprecated. Please use `length_out` instead.
+#> - `length_out` always returns `length_out` observations
+#> - `n_future` may return fewer than `n_future` when inspect_weekdays/inspect_months and skip/insert values are included.
 #> [1] "Serie extendida 12 períodos, usando modelo auto detectado"
 ```
 
@@ -718,8 +725,10 @@ de **1000** datos (dado el límite actual de la API)
 
 ## Estado del Proyecto
 
-  - [x] Aprobado en CRAN
+  - [x] Aprobado en CRAN\!
   - [x] Funcionalidad *básica*
   - [x] Captura de errores de uso o en la devolución de datos (básico)
   - [ ] Captura de errores avanzada
-  - [ ] Otros
+  - [ ] Mejorar la documentación
+  - [ ] Mejora de la función Search\_online (i.e. evitar una descarga
+    por búsqueda)
