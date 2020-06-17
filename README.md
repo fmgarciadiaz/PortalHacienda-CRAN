@@ -32,7 +32,7 @@ Para instalar el paquete desde [CRAN](https://CRAN.R-project.org) con:
 install.packages("PortalHacienda")
 ```
 
-Versión de desarrollo:
+Instalar versión de desarrollo:
 
 ``` r
 # install.packages("devtools")
