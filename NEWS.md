@@ -1,5 +1,5 @@
 # PortalHacienda 0.1.3
-- Work in progress
+- Updated timetk::tk_make_future_timeseries parameter, from n_future to length_out
 
 # PortalHacienda 0.1.2
 - Fixed missing links returned by examples

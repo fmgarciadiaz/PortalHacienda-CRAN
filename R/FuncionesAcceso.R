@@ -16,7 +16,7 @@ utils::globalVariables(c("serie_descripcion", "serie_id"))   # Evitar notes del 
 .onAttach <- function(libname, pkgname) {
   packageStartupMessage(
     "=============================================================================" %+% "\n" %+%
-    "Acceso API Portal Datos Hacienda - v 0.1.3 - 06-2020 por F.Garc" %+%
+    "Acceso API Portal Datos Hacienda - v 0.1.3.9000 - 06-2020 por F.Garc" %+%
     "\U00ED" %+% "a D" %+% "\U00ED" %+% "az" %+% "\n")
 }
 
@@ -135,7 +135,7 @@ Forecast <- function(SERIE, N = 6, confidence = c(80), ...) {
     SERIE.final <- rbind(SERIE.final,                                                         # pega el forecast, al que a su vez le pego fechas corregidas
                          xts::xts(cbind(y = SERIE.fit$mean),
                           timetk::tk_make_future_timeseries(zoo::as.Date(timetk::tk_index(SERIE, timetk_idx = TRUE)),
-                                                                    n_future = N,
+                                                                    length_out = N,
                                                                     inspect_weekdays = TRUE,
                                                                     inspect_months = TRUE)))
     }
@@ -144,7 +144,7 @@ Forecast <- function(SERIE, N = 6, confidence = c(80), ...) {
     SERIE.final <- rbind(SERIE.final,                                                         # pega el forecast, al que a su vez le pego fechas corregidas
                          xts::xts(cbind(y = SERIE.fit$mean, y.lo = SERIE.fit$lower, y.hi = SERIE.fit$upper),
                            timetk::tk_make_future_timeseries(zoo::as.Date(timetk::tk_index(SERIE, timetk_idx = TRUE)),
-                                                                    n_future = N,
+                                                                    length_out = N,
                                                                     inspect_weekdays = TRUE,
                                                                     inspect_months = TRUE)))
     }
@@ -186,7 +186,7 @@ vForecast <- function(SERIE, N = 6, ...) {
   SERIE.final <- rbind(SERIE.final,                                                         # pega el forecast, al que a su vez le pego fechas corregidas
                        xts::xts(SERIE.fit,
                                 timetk::tk_make_future_timeseries(zoo::as.Date(timetk::tk_index(SERIE, timetk_idx = TRUE)),
-                                        n_future = N,
+                                        length_out = N,
                                         inspect_weekdays = TRUE,
                                         inspect_months = TRUE)))
   print("Serie extendida " %+% N %+% " per\U00ED" %+% "odos, usando modelo auto detectado")
