@@ -57,6 +57,9 @@ ERROR in CRAN status.
 ## 06-14-20 Resubmission
 - Temporary Ministry of Economy API error caused Readme.md to fail 
 
-## 07-14-20 Resubmission
+## 06-14-20 Resubmission
 - Fixed Roxygen reexporting magrittr pipe causing WARNING
 
+## 27-06-20 NEW VERSION V 0.1.3 UPDATES & Fixes
+- Translated error messages to English as per Prof. Brian D. Ripley suggestion
+- Updated to use timetk v 2.0 new parameters

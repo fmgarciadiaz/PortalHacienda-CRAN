@@ -93,7 +93,7 @@ La periocidiad es usada por la función `Forecast` para correcta detección de *
 Las series diarias tienen un tope de **1000** datos (dado el límite actual de la API)
 
 ## Cómo citar
-
+  
 > Fernando García Díaz. (2020, June 14). fmgarciadiaz/PortalHacienda. Zenodo. http://doi.org/10.5281/zenodo.3893947
 
 

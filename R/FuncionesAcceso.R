@@ -16,7 +16,7 @@ utils::globalVariables(c("serie_descripcion", "serie_id"))   # Evitar notes del 
 .onAttach <- function(libname, pkgname) {
   packageStartupMessage(
     "=============================================================================" %+% "\n" %+%
-    "Acceso API Portal Datos Hacienda - v 0.1.3.9000 - 06-2020 por F.Garc" %+%
+    "Acceso API Portal Datos Hacienda - v 0.1.3 - 06-2020 por F.Garc" %+%
     "\U00ED" %+% "a D" %+% "\U00ED" %+% "az" %+% "\n")
 }
 
@@ -61,7 +61,7 @@ freq <- function(x) {
 Get <- function(series, start_date = NULL, end_date = NULL, representation_mode = NULL,
                 collapse = NULL, collapse_aggregation = NULL, limit = 1000, timeout = 5,
                 detail = FALSE) {
-  cat("Descagando series...\n")
+  cat("Downloading data series...\n")
   url_base <- "http://apis.datos.gob.ar/series/api/series?"                                      # Cambiar URL base si cambia en la WEB
   GETSAFE <- purrr::safely(httr::GET)   # enmarco en purrr para manejo de errores
   suppressMessages(serie <- GETSAFE(url = url_base, query = list(ids = series,
@@ -74,25 +74,24 @@ Get <- function(series, start_date = NULL, end_date = NULL, representation_mode 
                                                                       limit = limit),
                                                                       httr::timeout(timeout)))
   if (is.null(serie$result)) {
-    stop("Error general o timeout, por favor verificar conexi\u00F3n.")
+    stop("Time-out error, please verify your internet connection.\n")
     }
   suppressMessages(serie <- httr::content(serie$result, encoding = "UTF-8"))
-  if ("errors" %in% names(serie)) stop("Error en la carga > " %+% serie$errors[[1]][[1]])
+  if ("errors" %in% names(serie)) stop("Error loading. Returned message > " %+% serie$errors[[1]][[1]] %+% "\n")
   if (detail == TRUE) {
     Listado <- Search_online()
     Nombres <-  Listado %>% dplyr::filter(grepl(gsub("\\,", "\\|", series), serie_id)) %>%
     dplyr::select(serie_id, serie_descripcion)                                                   # obtener descripciones
     serie <- xts::xts(serie[, -1], order.by = lubridate::ymd(serie$indice_tiempo), unique = TRUE, desc = Nombres[2])  # Pasar a XTS
     attr(serie, "frequency") <- freq(serie)                                                        # Fijar frecuencia de la serie en el XTS
-    print("Cargada/s las series: " %+% Nombres[1] %+% ". Descripci\u00F3n: " %+% Nombres[2])
-    print("Cargados " %+% length(serie) %+% " datos, desde " %+% min(zoo::index(serie)) %+%
-          " hasta " %+% max(zoo::index(serie)) %+% " Periodicidad estimada: " %+% xts::periodicity(serie)$scale)
+    cat("Downloaded: " %+% Nombres[1] %+% ". Description: " %+% Nombres[2] %+% "\n")
+    cat("Loaded " %+% length(serie) %+% " data points, from " %+% min(zoo::index(serie)) %+%
+          " to " %+% max(zoo::index(serie)) %+% ". Periodicity: " %+% xts::periodicity(serie)$scale %+% "\n")
   } else {
     serie <- xts::xts(serie[, -1], order.by = lubridate::ymd(serie$indice_tiempo), unique = TRUE)  # Pasar a XTS
     attr(serie, "frequency") <- freq(serie)                                                        # Fijar frecuencia de la serie en el XTS
-    print("Cargada/s las series...")
-    print("Cargados " %+% length(serie) %+% " datos, desde " %+% min(zoo::index(serie)) %+%
-            " hasta " %+% max(zoo::index(serie)) %+% " Periodicidad estimada: " %+% xts::periodicity(serie)$scale)
+    cat("Loaded " %+% length(serie) %+% " data points, from " %+% min(zoo::index(serie)) %+%
+            " to " %+% max(zoo::index(serie)) %+% ". Periodicity: " %+% xts::periodicity(serie)$scale %+% "\n")
   }
   return(serie)
 }
@@ -149,7 +148,7 @@ Forecast <- function(SERIE, N = 6, confidence = c(80), ...) {
                                                                     inspect_months = TRUE)))
     }
   colnames(SERIE.final)[1] <- "y"
-  print("Serie extendida " %+% N %+% " per\U00EDodos, usando el modelo auto detectado: " %+% SERIE.model)
+  cat("Time-series extended " %+% N %+% " data points, using auto-detected model: " %+% SERIE.model %+% "\n")
   return(SERIE.final)
 }
 
@@ -189,7 +188,7 @@ vForecast <- function(SERIE, N = 6, ...) {
                                         length_out = N,
                                         inspect_weekdays = TRUE,
                                         inspect_months = TRUE)))
-  print("Serie extendida " %+% N %+% " per\U00ED" %+% "odos, usando modelo auto detectado")
+  cat("Time-series extended " %+% N %+% " data points, using auto-detected models" %+% "\n")
   return(SERIE.final)
 }
 
@@ -197,7 +196,7 @@ vForecast <- function(SERIE, N = 6, ...) {
 #' Buscar series
 #'
 #' Buscar en el archivo de meta-datos online del Portal de Hacienda.
-#' Utilizar \code{Search_online("*")} para descargar todos los metadatos y hacer búsquedas posteriores
+#' Se recomienda utilizar \code{Search_online("*")} para descargar todos los metadatos y hacer búsquedas posteriores
 #' sin descargar toda la base nuevamente.
 #'
 #' @param PATTERN Pattern de búsqueda en la descripción de la serie
@@ -211,7 +210,7 @@ vForecast <- function(SERIE, N = 6, ...) {
 #' Todaslasseries <- Search_online("*")
 #' }
 Search_online <- function(PATTERN = "*") {
-  cat("Descagando base de metadatos...\n")
+  cat("Downloading time-series database...\n")
   download.file("http://infra.datos.gob.ar/catalog/modernizacion/dataset/1/distribution/1.2/download/series-tiempo-metadatos.csv",
                 file.path(tempdir(), "series-tiempo-metadatos.csv"))  # Fixed as per CRAN suggestion
   Temp  <- suppressMessages(suppressWarnings(readr::read_csv(file.path(tempdir(), "series-tiempo-metadatos.csv"))))

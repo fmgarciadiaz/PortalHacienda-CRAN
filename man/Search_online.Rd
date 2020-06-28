@@ -14,7 +14,7 @@ Tibble con las series disponibles que con descripción coincidente
 }
 \description{
 Buscar en el archivo de meta-datos online del Portal de Hacienda.
-Utilizar \code{Search_online("*")} para descargar todos los metadatos y hacer búsquedas posteriores
+Se recomienda utilizar \code{Search_online("*")} para descargar todos los metadatos y hacer búsquedas posteriores
 sin descargar toda la base nuevamente.
 }
 \examples{

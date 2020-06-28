@@ -50,10 +50,10 @@ Búsqueda de series en la base de meta-datos online con `Search_online`.
 # Cargar el paquete
 library(PortalHacienda)
 #> =============================================================================
-#> Acceso API Portal Datos Hacienda - v 0.1.3.9000 - 06-2020 por F.García Díaz
+#> Acceso API Portal Datos Hacienda - v 0.1.3 - 06-2020 por F.García Díaz
 # Buscar series relacionadas con el tipo de cambio
 Series_TCN <- Search_online("tipo de cambio")
-#> Descagando base de metadatos...
+#> Downloading time-series database...
 # Borrar la columna de links que devuelve la búsqueda 
 Series_TCN$distribucion_url_descarga <- NULL
 # mostrar prieras tres líneas de la tabla
@@ -668,13 +668,12 @@ un plot sencillo.
 ``` r
 
 TCN <- Forecast(Get("174.1_T_DE_CATES_0_0_32" , start_date = 2000), 12)       
-#> Descagando series...
-#> [1] "Cargada/s las series..."
-#> [1] "Cargados 243 datos, desde 2000-01-01 hasta 2020-03-01 Periodicidad estimada: monthly"
+#> Downloading data series...
+#> Loaded 243 data points, from 2000-01-01 to 2020-03-01. Periodicity: monthly
 #> Registered S3 method overwritten by 'quantmod':
 #>   method            from
 #>   as.zoo.data.frame zoo
-#> [1] "Serie extendida 12 períodos, usando el modelo auto detectado: ARIMA(4,2,1)(0,0,2)[12]"
+#> Time-series extended 12 data points, using auto-detected model: ARIMA(4,2,1)(0,0,2)[12]
 # Mostrar resultado
 plot(TCN , main = "Tipo de Cambio Nominal ($/USD)")
 ```
@@ -686,9 +685,8 @@ comas…
 
 ``` r
 plot(Get("6.2_AGCS_2004_T_39,6.2_IM_2004_T_23,6.2_C_2004_T_12") , legend.loc = "topleft" , main = "VAB sectorial ($ de 2004)")
-#> Descagando series...
-#> [1] "Cargada/s las series..."
-#> [1] "Cargados 192 datos, desde 2004-01-01 hasta 2019-10-01 Periodicidad estimada: quarterly"
+#> Downloading data series...
+#> Loaded 192 data points, from 2004-01-01 to 2019-10-01. Periodicity: quarterly
 ```
 
 <img src="man/figures/README-example3-1.png" width="80%" />
@@ -698,10 +696,9 @@ utilizar la variante vectorial de `Forecast`, que es `vForecast`:
 
 ``` r
 TCN <- vForecast(Get("120.1_PCE_1993_0_24,120.1_ED1_1993_0_26"),12)
-#> Descagando series...
-#> [1] "Cargada/s las series..."
-#> [1] "Cargados 64 datos, desde 1986-01-01 hasta 2017-01-01 Periodicidad estimada: yearly"
-#> [1] "Serie extendida 12 períodos, usando modelo auto detectado"
+#> Downloading data series...
+#> Loaded 64 data points, from 1986-01-01 to 2017-01-01. Periodicity: yearly
+#> Time-series extended 12 data points, using auto-detected models
 ```
 
 ### Nota:
