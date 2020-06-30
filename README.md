@@ -57,10 +57,10 @@ Series_TCN <- Search_online("tipo de cambio")
 # Borrar la columna de links que devuelve la búsqueda 
 Series_TCN$distribucion_url_descarga <- NULL
 # mostrar prieras tres líneas de la tabla
-kableExtra::kable_styling(knitr::kable(head(Series_TCN,3) ,"html"), font_size = 7)    
+kableExtra::kable_styling(knitr::kable(head(Series_TCN,3) ,"html"), font_size = 6)    
 ```
 
-<table class="table" style="font-size: 7px; margin-left: auto; margin-right: auto;">
+<table class="table" style="font-size: 6px; margin-left: auto; margin-right: auto;">
 
 <thead>
 
@@ -719,7 +719,7 @@ de **1000** datos (dado el límite actual de la API)
   - [x] Aprobado en CRAN\!
   - [x] Funcionalidad *básica*
   - [x] Captura de errores de uso o en la devolución de datos (básico)
-  - [ ] Captura de errores avanzada
+  - [ ] Captura de errores detallada
   - [ ] Mejorar la documentación
   - [ ] Mejora de la función Search\_online (i.e. evitar una descarga
     por búsqueda)

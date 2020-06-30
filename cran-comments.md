@@ -63,3 +63,10 @@ ERROR in CRAN status.
 ## 27-06-20 NEW VERSION V 0.1.3 UPDATES & Fixes
 - Translated error messages to English as per Prof. Brian D. Ripley suggestion
 - Updated to use timetk v 2.0 new parameters
+
+## 30-06-20 Resubmission
+"Please single quote software names such as 'forecast' in the 
+Description field and note that 'forecast' is a package rather than a 
+library." Fixed as per Uwe Ligges request.
+
+
