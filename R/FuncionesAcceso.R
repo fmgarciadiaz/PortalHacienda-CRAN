@@ -16,7 +16,7 @@ utils::globalVariables(c("serie_descripcion", "serie_id"))   # Evitar notes del 
 .onAttach <- function(libname, pkgname) {
   packageStartupMessage(
     "=============================================================================" %+% "\n" %+%
-    "Acceso API Portal Datos Hacienda - v 0.1.3 - 06-2020 por F.Garc" %+%
+    "Acceso API Portal Datos Hacienda - v 0.1.4 - 07-2020 por F.Garc" %+%
     "\U00ED" %+% "a D" %+% "\U00ED" %+% "az" %+% "\n")
 }
 
@@ -32,6 +32,7 @@ freq <- function(x) {
                       quarterly = 4,
                       yearly = 1)
   }
+
 
 # ==========================================================================
 #' Acceder a la API del Portal de Datos
@@ -59,25 +60,40 @@ freq <- function(x) {
 #' TCN <- Get("174.1_T_DE_CATES_0_0_32", start_date = 2015, collapse = "year",
 #' collapse_aggregation = "avg", representation_mode = "percent_change")
 Get <- function(series, start_date = NULL, end_date = NULL, representation_mode = NULL,
-                collapse = NULL, collapse_aggregation = NULL, limit = 1000, timeout = 5,
+                collapse = NULL, collapse_aggregation = NULL, limit = 1000, timeout = 10,
                 detail = FALSE) {
+
+  # 1. Check internet connection
+  if (!curl::has_internet()) {
+    message("Sorry, no internet connection. Could not download data series.")
+    return(invisible(NULL))
+  }
+  # If OK try to download
   cat("Downloading data series...\n")
-  url_base <- "http://apis.datos.gob.ar/series/api/series?"                                      # Cambiar URL base si cambia en la WEB
-  GETSAFE <- purrr::safely(httr::GET)   # enmarco en purrr para manejo de errores
-  suppressMessages(serie <- GETSAFE(url = url_base, query = list(ids = series,
-                                                                      start_date = start_date,
-                                                                      end_date = end_date,
-                                                                      representation_mode = representation_mode,
-                                                                      collapse = collapse,
-                                                                      collapse_aggregation = collapse_aggregation,
-                                                                      format = "csv",
-                                                                      limit = limit),
-                                                                      httr::timeout(timeout)))
-  if (is.null(serie$result)) {
-    stop("Time-out error, please verify your internet connection.\n")
-    }
-  suppressMessages(serie <- httr::content(serie$result, encoding = "UTF-8"))
-  if ("errors" %in% names(serie)) stop("Error loading. Returned message > " %+% serie$errors[[1]][[1]] %+% "\n")
+  url_base <- "http://apis.datos.gob.ar/series/api/series?"   # Cambiar URL base si cambia en la WEB
+  serie <- httr::GET(url = url_base, query = list(ids = series,
+                                                        start_date = start_date,
+                                                        end_date = end_date,
+                                                        representation_mode = representation_mode,
+                                                        collapse = collapse,
+                                                        collapse_aggregation = collapse_aggregation,
+                                                        format = "csv",
+                                                        limit = limit),
+                                                        httr::timeout(timeout))
+  # 2. Check if timed-out
+  if (class(serie) != "response") {
+    message("Timed out. Returned message: " %+% serie)
+    return(invisible(NULL))
+  }
+
+  # 3. Message for status > 400
+  if (httr::http_error(serie)) {
+    httr::message_for_status(serie, "download data series.\n")
+    message("Server returned this message: " %+% httr::content(serie)[[1]][[1]]) # message with API returned error
+    return(invisible(NULL))
+  }
+
+  suppressMessages(serie <- httr::content(serie, encoding = "UTF-8"))
   if (detail == TRUE) {
     Listado <- Search_online()
     Nombres <-  Listado %>% dplyr::filter(grepl(gsub("\\,", "\\|", series), serie_id)) %>%
@@ -210,11 +226,29 @@ vForecast <- function(SERIE, N = 6, ...) {
 #' Todaslasseries <- Search_online("*")
 #' }
 Search_online <- function(PATTERN = "*") {
+  # 1. Check internet connection
+  if (!curl::has_internet()) {
+    message("Sorry, no internet connection. Could not download time-series database.")
+    return(invisible(NULL))
+  }
   cat("Downloading time-series database...\n")
-  download.file("http://infra.datos.gob.ar/catalog/modernizacion/dataset/1/distribution/1.2/download/series-tiempo-metadatos.csv",
-                file.path(tempdir(), "series-tiempo-metadatos.csv"))  # Fixed as per CRAN suggestion
-  Temp  <- suppressMessages(suppressWarnings(readr::read_csv(file.path(tempdir(), "series-tiempo-metadatos.csv"))))
-  unlink(file.path(tempdir(), "series-tiempo-metadatos.csv"))
+  Temp <- httr::GET("http://infra.datos.gob.ar/catalog/modernizacion/dataset/1/distribution/1.2/download/series-tiempo-metadatos.csv",
+                    httr::progress(), timeout = 5 )  # Fixed as per CRAN suggestion
+
+  # 2. Check if timed-out
+  if (class(Temp) != "response") {
+    message("Timed out. Returned message: " %+% Temp)
+    return(invisible(NULL))
+  }
+
+  # 3. Message for status > 400
+  if (httr::http_error(Temp)) {
+    httr::message_for_status(Temp, "download series meta-data.\n")
+    message("Server returned this message: " %+% httr::content(Temp)[[1]][[1]]) # message with API returned error
+    return(invisible(NULL))
+  }
+  # Meta-data database has some problematic rows (server side problem) so don´t show warnings
+  suppressWarnings(suppressMessages(Temp <- httr::content(Temp, encoding = "UTF-8")))
   return(Temp %>% dplyr::filter(grepl(PATTERN, serie_descripcion, ignore.case = TRUE)) %>%
            tibble::as_tibble())
 }

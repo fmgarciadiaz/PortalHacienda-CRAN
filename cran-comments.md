@@ -1,4 +1,4 @@
-## Test environments
+# Test environments
 * local OS X install, R 3.1.2
 * ubuntu 12.04 (on travis-ci), R 3.1.2
 * win-builder (devel and release)
@@ -63,3 +63,30 @@ ERROR in CRAN status.
 ## 27-06-20 NEW VERSION V 0.1.3 UPDATES & Fixes
 - Translated error messages to English as per Prof. Brian D. Ripley suggestion
 - Updated to use timetk v 2.0 new parameters
+
+## 30-06-20 Resumbission v 0.1.4:
+- Regarding Prof. Brian d. Ripley requirement:
+"You have *STILL* not complied with that policy:
+
+   > TCN <- Get("174.1_T_DE_CATES_0_0_32", start_date = "2017")
+     Downloading data series...
+     Error in Get("174.1_T_DE_CATES_0_0_32", start_date = "2017") :
+      Time-out error, please verify your internet connection.
+
+There is nothing wrong with the check server's Internet (sic)
+connection.  Yours is one of a handful of packages (out of 15800)
+failing to connect."
+
+- Sorry. I wasn't understanding what was ment by:
+
+  > Packages which use Internet resources should fail gracefully with an
+    informative message if the resource is not available (and not give a
+    check warning nor error)
+
+- CRAN Team: please accept my sincere apologies. Now I have:
+  - Downgraded downloading ERRORS to MESSAGES to be in line with CRAN policy
+  - The package now correctly identifies internet connection problems vs. other kind of problems:
+        - Added "no internet connection error" handling (via 'curl')
+        - Added user side request errors handling (via 'httr')
+        - Added server side return errors handling (via 'httr')
+        - Server error messages are now returned with a message to the user

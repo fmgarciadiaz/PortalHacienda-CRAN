@@ -12,7 +12,7 @@ Get(
   collapse = NULL,
   collapse_aggregation = NULL,
   limit = 1000,
-  timeout = 5,
+  timeout = 10,
   detail = FALSE
 )
 }

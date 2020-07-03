@@ -90,7 +90,6 @@ TCN <- vForecast(Get("120.1_PCE_1993_0_24,120.1_ED1_1993_0_26"),12)
 ### Nota:
 Las series se cargan en formato XTS, con la periodicidad auto-detectada por el paquete `xts`.
 La periocidiad es usada por la función `Forecast` para correcta detección de *estacionalidad* y *lags*. `Forecast` agrega demás intervalos de confianza del 95%.
-Las series diarias tienen un tope de **1000** datos (dado el límite actual de la API)
 
 ## Cómo citar
   
@@ -101,7 +100,6 @@ Las series diarias tienen un tope de **1000** datos (dado el límite actual de l
 
 - [x] Aprobado en CRAN!
 - [x] Funcionalidad *básica*
-- [x] Captura de errores de uso o en la devolución de datos (básico)
-- [ ] Captura de errores avanzada
+- [x] Captura de errores - conexión de internet, errores devueltos por la API, etc.
 - [ ] Mejorar la documentación
 - [ ] Mejora de la función Search_online (i.e. evitar una descarga por búsqueda)

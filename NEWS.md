@@ -1,3 +1,7 @@
+# PortalHacienda 0.1.4
+- Improved error handling (internet connection is now tested)
+- Search_online now uses 'httr::GET' instead of 'download.file'
+
 # PortalHacienda 0.1.3
 - Updated timetk::tk_make_future_timeseries parameter, from n_future to length_out (timetk 2.0)
 - Translated error messages to English
