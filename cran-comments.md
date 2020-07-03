@@ -66,8 +66,9 @@ ERROR in CRAN status.
 
 
 ## 30-06-20 Resumbission v 0.1.4:
-- Regarding Prof. Brian d. Ripley requirement:
+
 Main changes
+
 1) "Please single quote software names such as 'forecast' in the 
 Description field and note that 'forecast' is a package rather than a 
 library." Fixed as per Uwe Ligges request.
