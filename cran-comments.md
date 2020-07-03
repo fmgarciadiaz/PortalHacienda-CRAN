@@ -90,3 +90,4 @@ failing to connect."
         - Added user side request errors handling (via 'httr')
         - Added server side return errors handling (via 'httr')
         - Server error messages are now returned with a message to the user
+
