@@ -51,7 +51,7 @@ freq <- function(x) {
 #' @param timeout Timeout para la conección a la API de datos
 #' @param detail Agregar detalles a las series (requiere descarga de base de metadatos)
 #'
-#' @return Un objeto XTS con la serie seleccionada en ID
+#' @return Un objeto XTS con la serie seleccionada en ID. NULL en caso de error.
 #' @export
 #' @examples
 #' # Cargar serie mensual de TCN
