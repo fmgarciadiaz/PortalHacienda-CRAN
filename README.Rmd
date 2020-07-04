@@ -57,9 +57,10 @@ Búsqueda de series en la base de meta-datos online con `Search_online`.
 library(PortalHacienda)
 # Buscar series relacionadas con el tipo de cambio
 Series_TCN <- Search_online("tipo de cambio")
-# Borrar la columna de links que devuelve la búsqueda 
+# Borrar la columna de links que devuelve la búsqueda y un par más
 Series_TCN$distribucion_url_descarga <- NULL
 Series_TCN$dataset_id <- NULL
+Series_TCN$dataset_descripcion <- NULL
 # mostrar prieras tres líneas de la tabla
 kableExtra::kable_styling(knitr::kable(head(Series_TCN,3) ,"html"), 
                           font_size = 6,
