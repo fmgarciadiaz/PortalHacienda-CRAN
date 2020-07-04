@@ -100,3 +100,7 @@ failing to connect."
         - Added server side return errors handling (via 'httr') 
         - Server error messages are now returned to the user with a message
 
+- There were no ERRORs nor WARNINGs (1 NOTE due to spanish words in description)
+        - local OS X with R 3.6.2
+        - win-builder
+        - R-hub Fedora & Ubuntu
