@@ -59,8 +59,11 @@ library(PortalHacienda)
 Series_TCN <- Search_online("tipo de cambio")
 # Borrar la columna de links que devuelve la búsqueda 
 Series_TCN$distribucion_url_descarga <- NULL
+Series_TCN$dataset_id <- NULL
 # mostrar prieras tres líneas de la tabla
-kableExtra::kable_styling(knitr::kable(head(Series_TCN,3) ,"html"), font_size = 6)    
+kableExtra::kable_styling(knitr::kable(head(Series_TCN,3) ,"html"), 
+                          font_size = 6,
+                          bootstrap_options = c("striped", "hover", "condensed", "responsive"),fixed_thead = T)    
 ```
 
 Bajar serie de tipo de cambio con `Get` y extender 12 períodos con `Forecast` (usa modelo auto-detectado del paquete ***forecast*** y extiende según la frecuencia detectada, días, meses o años). 
