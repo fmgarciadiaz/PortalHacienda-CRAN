@@ -36,7 +36,7 @@ Get(
 \item{detail}{Agregar detalles a las series (requiere descarga de base de metadatos)}
 }
 \value{
-Un objeto XTS con la serie seleccionada en ID
+Un objeto XTS con la serie seleccionada en ID. NULL en caso de error.
 }
 \description{
 \code{Get} devuelve la serie seleccionada en series = ID. Para un detalle sobre las opciones

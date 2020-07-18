@@ -44,7 +44,7 @@ Instalar versión de desarrollo:
 
 ```{r gh-installation2, eval = FALSE}
 # install.packages("devtools")
-devtools::install_github("fmgarciadiaz/PortalHacienda")
+devtools::install_github("fmgarciadiaz/PortalHacienda-CRAN")
 ```
 **Nota**: Debe instalarse previamente el paquete `devtools` para permitir la descarga desde `github`.
 

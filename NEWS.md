@@ -1,5 +1,5 @@
 # PortalHacienda 0.1.4
-- Improved error handling (internet connection is now tested)
+- Improved error handling (internet connection is now correctly tested)
 - Search_online now uses 'httr::GET' instead of 'download.file'
 
 # PortalHacienda 0.1.3

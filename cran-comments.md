@@ -65,7 +65,7 @@ ERROR in CRAN status.
 - Updated to use timetk v 2.0 new parameters
 
 
-## 07-15-20 Resumbission and version upgrade V 0.1.4:
+## 07-18-20 Resumbission and version upgrade V 0.1.4:
 
 Main changes & Fixes
 --------------------
