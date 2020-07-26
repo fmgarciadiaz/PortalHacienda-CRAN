@@ -1,3 +1,9 @@
+# PortalHacienda 0.1.5
+- Dropped readr from Imports (not needed after moving from download.file to GET)
+- Dropped download.file from NAMESPACE
+- Added Tutorial Vignette
+
+
 # PortalHacienda 0.1.4
 - Improved error handling (internet connection is now correctly tested)
 - Search_online now uses 'httr::GET' instead of 'download.file'
