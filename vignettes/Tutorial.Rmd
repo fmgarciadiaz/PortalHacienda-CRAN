@@ -1,8 +1,8 @@
 ---
-title: "Tutorial"
+title: "Tutorial de PortalHacienda"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Tutorial}
+  %\VignetteIndexEntry{Tutorial de PortalHacienda}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
