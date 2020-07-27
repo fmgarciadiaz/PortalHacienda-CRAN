@@ -1,5 +1,5 @@
 ---
-title: "Tutorial de uso de 'PortalHacienda'"
+title: "Tutorial"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Tutorial}
