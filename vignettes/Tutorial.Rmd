@@ -37,7 +37,7 @@ tail(Series,10)
 
 ## 3. Identificar y descargar la serie
 
-Identificamos el 'serie_id' de la series que nos interesa, en este caso "174.1_T_DE_CATES_0_0_32".
+Identificamos el *serie_id* de la serie que nos interesa, en este caso "174.1_T_DE_CATES_0_0_32".
 Luego la descargamos con *Get*, seleccionando la fecha de inicio y otros parámetros.
 
 ```{r descarga}
@@ -50,7 +50,7 @@ TCN <- Get("174.1_T_DE_CATES_0_0_32", start_date = "2010")
 Si necesitamos extender la serie rápidamente, podemos hacerlo con *Forecast*.
 La función utiliza la selección automática de modelos ARIMA del paquete 'forecast'.
 En este caso pedimos una proyección de 12 meses y crear bandas de confianza del 80%.
-La función nos indica el modelo que auto-detectó.
+La función nos devuelve la serie extendida e indica el modelo que auto-detectó.
 
 ```{r forecast}
 TCN <- TCN <- Forecast(TCN, N = 12 , confidence = c(80))
@@ -59,9 +59,11 @@ TCN <- TCN <- Forecast(TCN, N = 12 , confidence = c(80))
 
 ## 5. Listo!
 
-Ya tenemos la proyección de la serie en 'TCN'
+Ya tenemos la proyección de la serie en 'TCN' para utilizar y graficar.
 
 ```{r graficar, fig.align= "center", fig.height= 3, fig.width= 7}
 tail(TCN, 10)
 plot(TCN , main = "Tipo de Cambio Nominal ($/USD)")
 ```
+
+
