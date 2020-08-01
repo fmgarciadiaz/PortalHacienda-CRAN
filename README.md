@@ -50,7 +50,7 @@ Búsqueda de series en la base de meta-datos online con `Search_online`.
 # Cargar el paquete
 library(PortalHacienda)
 #> =============================================================================
-#> Acceso API Portal Datos Hacienda - v 0.1.4 - 07-2020 por F.García Díaz
+#> Acceso API Portal Datos Hacienda - v 0.1.5 - 08-2020 por F.García Díaz
 # Buscar series relacionadas con el tipo de cambio
 Series_TCN <- Search_online("tipo de cambio")
 #> Downloading time-series database...
