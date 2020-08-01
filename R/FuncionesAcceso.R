@@ -254,7 +254,7 @@ Search_online <- function(PATTERN = "*") {
 }
 
 
-#' PortalHacienda: Interface R a la API de datos del Ministerio de Hacienda
+#' PortalHacienda: Interfase R a la API de datos del Ministerio de Hacienda
 #'
 #' Un paquete R para acceder a la API del portal de datos del Ministerio de Hacienda de la República Argentina.
 #' Se proveen funciones para buscar, descargar y proyectar las series de tiempo de la base.

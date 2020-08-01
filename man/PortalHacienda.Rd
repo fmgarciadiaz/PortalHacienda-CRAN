@@ -3,7 +3,7 @@
 \docType{package}
 \name{PortalHacienda}
 \alias{PortalHacienda}
-\title{PortalHacienda: Interface R a la API de datos del Ministerio de Hacienda}
+\title{PortalHacienda: Interfase R a la API de datos del Ministerio de Hacienda}
 \description{
 Un paquete R para acceder a la API del portal de datos del Ministerio de Hacienda de la República Argentina.
 Se proveen funciones para buscar, descargar y proyectar las series de tiempo de la base.
