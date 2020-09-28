@@ -56,9 +56,6 @@ freq <- function(x) {
 #' @examples
 #' # Cargar serie mensual de TCN
 #' TCN     <- Get("174.1_T_DE_CATES_0_0_32", start_date = "2017")
-#' # Cargar serie mensual de TCN, transformada en anual y en variaciones
-#' TCN <- Get("174.1_T_DE_CATES_0_0_32", start_date = 2015, collapse = "year",
-#' collapse_aggregation = "avg", representation_mode = "percent_change")
 Get <- function(series, start_date = NULL, end_date = NULL, representation_mode = NULL,
                 collapse = NULL, collapse_aggregation = NULL, limit = 1000, timeout = 10,
                 detail = FALSE) {
