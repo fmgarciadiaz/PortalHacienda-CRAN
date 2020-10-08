@@ -17,7 +17,8 @@ knitr::opts_chunk$set(
 [![CRAN status](https://www.r-pkg.org/badges/version/PortalHacienda)](https://cran.r-project.org/package=PortalHacienda)
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![R build status](https://github.com/fmgarciadiaz/PortalHacienda-CRAN/workflows/R-CMD-check/badge.svg)](https://github.com/fmgarciadiaz/PortalHacienda-CRAN/actions)
-[![DOI](https://zenodo.org/badge/266652798.svg)](https://zenodo.org/badge/latestdoi/266652798)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3893947.svg)](https://doi.org/10.5281/zenodo.3893947)
+
 [![Downloads](https://cranlogs.r-pkg.org/badges/grand-total/PortalHacienda?color=ff69b4)](https://cran.r-project.org/package=PortalHacienda)
 
 <!-- badges: end -->
