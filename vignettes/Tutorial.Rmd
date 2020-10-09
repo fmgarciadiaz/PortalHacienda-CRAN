@@ -53,7 +53,7 @@ En este caso pedimos una proyección de 12 meses y crear bandas de confianza del
 La función nos devuelve la serie extendida e indica el modelo que auto-detectó.
 
 ```{r forecast}
-TCN <- TCN <- Forecast(TCN, N = 12 , confidence = c(80))
+TCN <- Forecast(TCN, N = 12 , confidence = c(80))
 ```
 
 
