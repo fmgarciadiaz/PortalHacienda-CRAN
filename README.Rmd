@@ -98,7 +98,6 @@ La periocidiad es usada por la función `Forecast` para correcta detección de *
 
 ## Cómo citar
   
-> Fernando García Díaz. (2020, June 14). fmgarciadiaz/PortalHacienda. Zenodo. http://doi.org/10.5281/zenodo.3893947
 > Fernando García Díaz. (2020, June 14). fmgarciadiaz/PortalHacienda-CRAN
 
 
