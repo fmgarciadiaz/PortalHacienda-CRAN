@@ -98,7 +98,7 @@ La periocidiad es usada por la función `Forecast` para correcta detección de *
 
 ## Cómo citar
   
-> Fernando García Díaz. (2020, June 14). fmgarciadiaz/PortalHacienda-CRAN
+> Fernando García Díaz. (2020, June 14). fmgarciadiaz/PortalHacienda-CRAN. https://doi.org/10.5281/zenodo.3893947
 
 
 ## Estado del Proyecto
@@ -106,5 +106,5 @@ La periocidiad es usada por la función `Forecast` para correcta detección de *
 - [x] Aprobado en CRAN!
 - [x] Funcionalidad *básica*
 - [x] Captura de errores - conexión de internet, errores devueltos por la API, etc.
-- [ ] Mejorar la documentación
+- [x] Mejorar la documentación
 - [ ] Mejora de la función Search_online (i.e. evitar una descarga por búsqueda)
