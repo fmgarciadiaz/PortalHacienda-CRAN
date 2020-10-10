@@ -5,7 +5,7 @@
 
 ## 10-10-20
 ------------
-- Updated other Zenodo URL in README.md (Sorry, had missed that one in the last submit)
+- Updated another Zenodo URL in README.md (Sorry, had missed that one in the last submit)
 
 Thanks, we see:
    Found the following (possibly) invalid URLs:
