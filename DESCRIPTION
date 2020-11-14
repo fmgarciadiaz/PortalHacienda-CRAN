@@ -1,7 +1,7 @@
 Package: PortalHacienda
 Type: Package
 Title: Acceder Con R a Los Datos Del Portal De Hacienda
-Version: 0.1.5
+Version: 0.1.6
 Authors@R: person("Fernando", "Garcia Diaz", email = "fmgarciadiaz78@gmail.com",
                   role = c("aut", "cre"))
 Description: Obtener listado de datos, acceder y extender series del Portal de 
@@ -24,7 +24,8 @@ Imports:
     tibble (>= 3.0.1),
     magrittr (>= 1.5),
     zoo (>= 1.8-8),
-    curl
+    curl,
+    purrr
 RoxygenNote: 7.1.1
 Depends: R (>= 3.6.0)
 Suggests: 

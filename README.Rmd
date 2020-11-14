@@ -105,6 +105,6 @@ La periocidiad es usada por la función `Forecast` para correcta detección de *
 
 - [x] Aprobado en CRAN!
 - [x] Funcionalidad *básica*
-- [x] Captura de errores - conexión de internet, errores devueltos por la API, etc.
+- [x] Captura de errores - conexión de internet, errores devueltos por la API, timeout, etc.
 - [x] Mejorar la documentación
 - [ ] Mejora de la función Search_online (i.e. evitar una descarga por búsqueda)

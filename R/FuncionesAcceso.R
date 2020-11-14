@@ -16,7 +16,7 @@ utils::globalVariables(c("serie_descripcion", "serie_id"))   # Evitar notes del 
 .onAttach <- function(libname, pkgname) {
   packageStartupMessage(
     "=============================================================================" %+% "\n" %+%
-    "Acceso API Portal Datos Hacienda - v 0.1.5 - 08-2020 por F.Garc" %+%
+    "Acceso API Portal Datos Hacienda - v 0.1.6 - 08-2020 por F.Garc" %+%
     "\U00ED" %+% "a D" %+% "\U00ED" %+% "az" %+% "\n")
 }
 
@@ -33,6 +33,8 @@ freq <- function(x) {
                       yearly = 1)
   }
 
+# Get safely
+safe_GET <- purrr::safely(httr::GET)
 
 # ==========================================================================
 #' Acceder a la API del Portal de Datos
@@ -55,7 +57,7 @@ freq <- function(x) {
 #' @export
 #' @examples
 #' # Cargar serie mensual de TCN
-#' TCN     <- Get("174.1_T_DE_CATES_0_0_32", start_date = "2017")
+#' TCN     <- Get("174.1_T_DE_CATES_0_0_32", start_date = "2017", timeout = 15)
 Get <- function(series, start_date = NULL, end_date = NULL, representation_mode = NULL,
                 collapse = NULL, collapse_aggregation = NULL, limit = 1000, timeout = 10,
                 detail = FALSE) {
@@ -68,7 +70,7 @@ Get <- function(series, start_date = NULL, end_date = NULL, representation_mode 
   # If OK try to download
   cat("Downloading data series...\n")
   url_base <- "http://apis.datos.gob.ar/series/api/series?"   # Cambiar URL base si cambia en la WEB
-  serie <- httr::GET(url = url_base, query = list(ids = series,
+  serie <- safe_GET(url = url_base, query = list(ids = series,
                                                         start_date = start_date,
                                                         end_date = end_date,
                                                         representation_mode = representation_mode,
@@ -76,10 +78,10 @@ Get <- function(series, start_date = NULL, end_date = NULL, representation_mode 
                                                         collapse_aggregation = collapse_aggregation,
                                                         format = "csv",
                                                         limit = limit),
-                                                        httr::timeout(timeout))
+                                                        httr::timeout(timeout))[[1]]
   # 2. Check if timed-out
   if (class(serie) != "response") {
-    message("Timed out. Returned message: " %+% serie)
+    message("Timed out. Please retry later.")
     return(invisible(NULL))
   }
 
@@ -131,7 +133,7 @@ Get <- function(series, start_date = NULL, end_date = NULL, representation_mode 
 #' @examples
 #' # Forecast de 12 meses del tipo de cambio
 #' \donttest{
-#' TCN <- Forecast(Get("174.1_T_DE_CATES_0_0_32", start_date = "2017"), N = 12 , confidence = c(80))
+#' TCN <- Forecast(Get("174.1_T_DE_CATES_0_0_32", start_date = "2017", timeout = 15))
 #' }
 Forecast <- function(SERIE, N = 6, confidence = c(80), ...) {
   if (confidence == FALSE)
@@ -229,12 +231,12 @@ Search_online <- function(PATTERN = "*") {
     return(invisible(NULL))
   }
   cat("Downloading time-series database...\n")
-  Temp <- httr::GET("http://infra.datos.gob.ar/catalog/modernizacion/dataset/1/distribution/1.2/download/series-tiempo-metadatos.csv",
-                    httr::progress(), timeout = 5 )  # Fixed as per CRAN suggestion
+  Temp <- safe_GET("http://infra.datos.gob.ar/catalog/modernizacion/dataset/1/distribution/1.2/download/series-tiempo-metadatos.csv",
+                    httr::progress(), timeout = 5 )[[1]]  # Fixed as per CRAN suggestion
 
   # 2. Check if timed-out
   if (class(Temp) != "response") {
-    message("Timed out. Returned message: " %+% Temp)
+    message("Timed out. Please retry later.")
     return(invisible(NULL))
   }
 

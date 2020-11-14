@@ -41,7 +41,7 @@ Identificamos el *serie_id* de la serie que nos interesa, en este caso "174.1_T_
 Luego la descargamos con *Get*, seleccionando la fecha de inicio y otros parámetros.
 
 ```{r descarga}
-TCN <- Get("174.1_T_DE_CATES_0_0_32", start_date = "2010")
+TCN <- Get("174.1_T_DE_CATES_0_0_32", start_date = "2010", timeout = 15)
 ```
 
 
@@ -53,6 +53,7 @@ En este caso pedimos una proyección de 12 meses y crear bandas de confianza del
 La función nos devuelve la serie extendida e indica el modelo que auto-detectó.
 
 ```{r forecast}
+if (length(TCN) > 0)
 TCN <- Forecast(TCN, N = 12 , confidence = c(80))
 ```
 
@@ -62,8 +63,9 @@ TCN <- Forecast(TCN, N = 12 , confidence = c(80))
 Ya tenemos la proyección de la serie en 'TCN' para utilizar y graficar.
 
 ```{r graficar, fig.align= "center", fig.height= 3, fig.width= 7}
+if (length(TCN) > 0){
 tail(TCN, 10)
-plot(TCN , main = "Tipo de Cambio Nominal ($/USD)")
+plot(TCN , main = "Tipo de Cambio Nominal ($/USD)")}
 ```
 
 

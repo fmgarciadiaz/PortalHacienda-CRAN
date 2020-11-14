@@ -24,6 +24,6 @@ Recomendado sólo para estimaciones rápidas.\code{Forecast} sólo acepta XTS co
 \examples{
 # Forecast de 12 meses del tipo de cambio
 \donttest{
-TCN <- Forecast(Get("174.1_T_DE_CATES_0_0_32", start_date = "2017"), N = 12 , confidence = c(80))
+TCN <- Forecast(Get("174.1_T_DE_CATES_0_0_32", start_date = "2017", timeout = 15))
 }
 }

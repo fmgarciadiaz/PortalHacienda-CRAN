@@ -1,3 +1,6 @@
+# PortalHacienda 0.1.6
+- Fixed server time-out returned error message
+
 # PortalHacienda 0.1.5
 - Dropped readr from Imports (not needed after moving from download.file to GET)
 - Dropped download.file from NAMESPACE

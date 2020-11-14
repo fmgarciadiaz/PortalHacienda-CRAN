@@ -3,6 +3,17 @@
 * ubuntu 12.04 (on travis-ci), R 3.1.2
 * win-builder (devel and release)
 
+## 14-10-20 v0.1.6
+-------------------
+- Fixed: httr::GET timeout was not handled properly, resulting in an error. 
+API (random) timeouts are now properly handled with purrr::safely. 
+
+<< v0.1.5 was removed from CRAN because of that problem:
+ Error: processing vignette 'Tutorial.Rmd' failed with diagnostics:
+    Timeout was reached: [apis.datos.gob.ar] Operation timed out after 154 milliseconds with 0 bytes received
+    --- failed re-building ‘Tutorial.Rmd’ >>
+
+
 ## 10-10-20
 ------------
 - Updated another Zenodo URL in README.md (Sorry, had missed that one in the last submit)
@@ -17,31 +28,4 @@ https://doi.org/10.5281/zenodo.3893947)
 Please change http --> https, add trailing slashes, or follow moved 
 content as appropriate.
 Please fix and resubmit.
-
-
-## 08-10-20
-------------
-- Updated Zenodo URL in README.md
-
-Thanks, we see:
-   Found the following (possibly) invalid URLs:
-     URL: http://doi.org/10.5281/zenodo.3893947 (moved to 
-https://doi.org/10.5281/zenodo.3893947)
-       From: README.md
-       Status: 200
-       Message: OK
-Please change http --> https, add trailing slashes, or follow moved 
-content as appropriate.
-Please fix and resubmit.
-
-
-## 09-26-20 PortalHacienda 0.1.5
------------
-- Package was archived but I'm not sure why!! (I didn't get any warning notification)
-- Anyway, I corrected these problems from V 0.1.4:
-  - Description had a repeated line
-  - Dropped readr from Imports (not needed after moving from download.file to GET)
-  - Dropped download.file from NAMESPACE (which was not used)
-- Plus: Added Tutorial Vignette
-
 
