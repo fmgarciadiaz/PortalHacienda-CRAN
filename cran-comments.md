@@ -5,11 +5,12 @@
 
 ## 14-10-20 v0.1.6
 -------------------
-- Fixed: httr::GET timeout was not handled properly, resulting in an error. 
-API (random) timeouts are now properly handled with purrr::safely. 
-
-<< v0.1.5 was removed from CRAN because of that problem:
- Error: processing vignette 'Tutorial.Rmd' failed with diagnostics:
+- Fixed: httr::GET timeout was not handled properly, resulting in random errors.
+  API (random) timeouts are now properly handled with purrr::safely. 
+  I think this is why the package was removed:
+  
+  << v0.1.5 was removed from CRAN because of that problem:
+   Error: processing vignette 'Tutorial.Rmd' failed with diagnostics:
     Timeout was reached: [apis.datos.gob.ar] Operation timed out after 154 milliseconds with 0 bytes received
     --- failed re-building ‘Tutorial.Rmd’ >>
 

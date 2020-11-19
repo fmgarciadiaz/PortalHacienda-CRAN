@@ -49,7 +49,7 @@ devtools::install_github("fmgarciadiaz/PortalHacienda-CRAN")
 ```
 **Nota**: Debe instalarse previamente el paquete `devtools` para permitir la descarga desde `github`.
 
-## Ejemplo
+## Ejemplo 
 
 Búsqueda de series en la base de meta-datos online con `Search_online`.
 
