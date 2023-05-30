@@ -1,7 +1,7 @@
 Package: PortalHacienda
 Type: Package
 Title: Acceder Con R a Los Datos Del Portal De Hacienda
-Version: 0.1.6
+Version: 0.1.7
 Authors@R: person("Fernando", "Garcia Diaz", email = "fmgarciadiaz78@gmail.com",
                   role = c("aut", "cre"))
 Description: Obtener listado de datos, acceder y extender series del Portal de 
@@ -12,7 +12,7 @@ Description: Obtener listado de datos, acceder y extender series del Portal de
     Hyndman RJ, Khandakar Y (2008) <doi:10.18637/jss.v027.i03>. 
 License: GPL-3
 Encoding: UTF-8
-LazyData: true
+LazyData: false
 URL: https://github.com/fmgarciadiaz/PortalHacienda-CRAN
 Imports: 
     dplyr (>= 0.8.5),
@@ -26,7 +26,7 @@ Imports:
     zoo (>= 1.8-8),
     curl,
     purrr
-RoxygenNote: 7.1.1
+RoxygenNote: 7.2.3
 Depends: R (>= 3.6.0)
 Suggests: 
     knitr,

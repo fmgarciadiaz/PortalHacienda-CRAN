@@ -1,3 +1,6 @@
+# PortalHacienda 0.1.7
+- Minor fixes to remove notes (LazyData = FALSE)
+
 # PortalHacienda 0.1.6
 - Fixed server time-out returned error message
 
