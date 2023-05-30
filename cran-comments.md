@@ -3,6 +3,11 @@
 * ubuntu 12.04 (on travis-ci), R 3.1.2
 * win-builder (devel and release)
 
+## 14-10-20 v0.1.7
+-------------------
+- Minor bug correction. Lazydata = FALSE to remove note.
+
+
 ## 14-10-20 v0.1.6
 -------------------
 - Fixed: httr::GET timeout was not handled properly, resulting in random errors.
