@@ -5,7 +5,11 @@
 
 ## 14-10-20 v0.1.7
 -------------------
-- Minor bug correction. Lazydata = FALSE to remove note.
+- The package was removed because it depends on timetk, which was archived but is now again on CRAN.
+- Minor correction: Lazydata = FALSE to remove note.
+- There is now a NOTE when testing for Windows Server:
+* checking for detritus in the temp directory ... NOTE Found the following files/directories:
+  'lastMiKTeXException'. However, I can't neither understand the cause of this note, nor reproduce it locally. 
 
 
 ## 14-10-20 v0.1.6
