@@ -1,6 +1,8 @@
 # PortalHacienda 0.1.7
 - Minor fixes to remove notes 
 - Set LazyData = FALSE
+- updated badge link
+- replaced class test with inherits
 
 # PortalHacienda 0.1.6
 - Fixed server time-out returned error message

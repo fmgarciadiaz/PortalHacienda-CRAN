@@ -3,6 +3,15 @@
 * ubuntu 12.04 (on travis-ci), R 3.1.2
 * win-builder (devel and release)
 
+## 14-10-20 v0.1.7b
+-------------------
+- resubmitting due to package not passing because of 2 NOTES.
+- NOTE 1 because I tested class == , now replaced with "inherits" as suggested
+     Found if() conditions comparing class() to string:
+- Corrrected Invalid URL in the badge 
+     URL: https://www.tidyverse.org/lifecycle/#experimental (moved to https://lifecycle.r-lib.org/articles/stages.html#experimental)
+
+
 ## 14-10-20 v0.1.7
 -------------------
 - The package was removed because it depends on timetk, which was archived but is now again on CRAN.

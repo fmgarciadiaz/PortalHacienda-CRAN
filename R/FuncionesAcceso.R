@@ -17,7 +17,7 @@ utils::globalVariables(c("serie_descripcion", "serie_id"))   # Evitar notes del 
 .onAttach <- function(libname, pkgname) {
   packageStartupMessage(
     "=============================================================================" %+% "\n" %+%
-    "Acceso API Portal Datos Hacienda - v 0.1.7 - 06-2023 por F.Garc" %+%
+    "Acceso API Portal Datos Hacienda - v 0.1.7b - 06-2023 por F.Garc" %+%
     "\U00ED" %+% "a D" %+% "\U00ED" %+% "az" %+% "\n")
 }
 
@@ -81,7 +81,7 @@ Get <- function(series, start_date = NULL, end_date = NULL, representation_mode 
                                                         limit = limit),
                                                         httr::timeout(timeout))[[1]]
   # 2. Check if timed-out
-  if (class(serie) != "response") {
+  if (!inherits(serie, "response")) {
     message("Timed out. Please retry later.")
     return(invisible(NULL))
   }
@@ -236,7 +236,7 @@ Search_online <- function(PATTERN = "*") {
                     httr::progress(), timeout = 5 )[[1]]  # Fixed as per CRAN suggestion
 
   # 2. Check if timed-out
-  if (class(Temp) != "response") {
+  if (!inherits(Temp, "response")) {
     message("Timed out. Please retry later.")
     return(invisible(NULL))
   }
