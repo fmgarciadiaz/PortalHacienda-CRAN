@@ -3,6 +3,23 @@
 * ubuntu 12.04 (on travis-ci), R 3.1.2
 * win-builder (devel and release)
 
+## 17-04-26 v0.1.8
+-------------------
+This is an update of the package PortalHacienda.
+
+Changes:
+- Added Language field to DESCRIPTION to fix HTML validation issue.
+- Updated documentation to remove deprecated @docType package.
+- Minor documentation improvements.
+
+Test environments:
+- local macOS
+- win-builder (devel)
+
+R CMD check results:
+0 errors | 0 warnings | 1 note (unable to verify current time)
+
+
 ## 14-10-20 v0.1.7b
 -------------------
 - resubmitting due to package not passing because of 2 NOTES.

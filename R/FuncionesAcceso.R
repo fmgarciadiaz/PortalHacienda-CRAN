@@ -17,7 +17,7 @@ utils::globalVariables(c("serie_descripcion", "serie_id"))   # Evitar notes del 
 .onAttach <- function(libname, pkgname) {
   packageStartupMessage(
     "=============================================================================" %+% "\n" %+%
-    "Acceso API Portal Datos Hacienda - v 0.1.7b - 06-2023 por F.Garc" %+%
+    "Acceso API Portal Datos Hacienda - v 0.1.8b - 04-2026 por F.Garc" %+%
     "\U00ED" %+% "a D" %+% "\U00ED" %+% "az" %+% "\n")
 }
 
@@ -261,8 +261,6 @@ Search_online <- function(PATTERN = "*") {
 #' An R client for the Ministry of Economy of Argentina time-series database API.
 #' This package provides functions for searching, downloading and forecasting available time-series.
 #'
-#'
-#'
 #' @section PortalHacienda functions:
 #' \code{Search_online} busca las series descargando la última versión del paquete de meta-datos (10mb aprox)
 #'
@@ -272,6 +270,5 @@ Search_online <- function(PATTERN = "*") {
 #'
 #' \code{vForecast} extiende múltiples series obtenidas con un modelo auto-detectado por el paquete **forecast** - Hyndman RJ, Khandakar Y (2008).
 #'
-#' @docType package
-#' @name PortalHacienda
-NULL
+#' @keywords internal
+"_PACKAGE"
